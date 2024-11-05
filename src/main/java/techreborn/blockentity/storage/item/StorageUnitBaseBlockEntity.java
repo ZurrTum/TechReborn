@@ -192,8 +192,8 @@ public class StorageUnitBaseBlockEntity extends MachineBaseBlockEntity implement
 			return inputStack;
 		}
 
-		if (getDisplayedStack().isEmpty()) {
-			// Check if storage is empty, including the output slot and locked stack
+		if (storeItemStack.isEmpty() && inventory.getStack(OUTPUT_SLOT).isEmpty()) {
+			// Check if storage is empty, including the output slot
 			storeItemStack = inputStack.copy();
 
 			if (inputStack.getCount() <= maxCapacity) {
