@@ -33,7 +33,6 @@ import reborncore.api.items.InventoryBase;
 import reborncore.common.blockentity.MachineBaseBlockEntity;
 import reborncore.common.blockentity.SlotConfiguration;
 
-import java.util.Objects;
 
 public class RebornInventory<T extends MachineBaseBlockEntity> extends InventoryBase {
 
