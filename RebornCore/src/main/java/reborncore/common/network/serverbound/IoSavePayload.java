@@ -37,9 +37,9 @@ public record IoSavePayload(BlockPos pos, int slotID, boolean input, boolean out
 	public static final PacketCodec<RegistryByteBuf, IoSavePayload> PACKET_CODEC = PacketCodec.tuple(
 		BlockPos.PACKET_CODEC, IoSavePayload::pos,
 		PacketCodecs.INTEGER, IoSavePayload::slotID,
-		PacketCodecs.BOOL, IoSavePayload::input,
-		PacketCodecs.BOOL, IoSavePayload::output,
-		PacketCodecs.BOOL, IoSavePayload::filter,
+		PacketCodecs.BOOLEAN, IoSavePayload::input,
+		PacketCodecs.BOOLEAN, IoSavePayload::output,
+		PacketCodecs.BOOLEAN, IoSavePayload::filter,
 		IoSavePayload::new
 	);
 
