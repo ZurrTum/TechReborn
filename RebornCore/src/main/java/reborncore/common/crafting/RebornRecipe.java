@@ -34,9 +34,11 @@ import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.IngredientPlacement;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
+import net.minecraft.recipe.book.RecipeBookCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
@@ -68,45 +70,37 @@ public interface RebornRecipe extends Recipe<RebornRecipeInput> {
 	);
 
 	@ApiStatus.Internal
-	record Default(RecipeType<?> type, List<SizedIngredient> ingredients, List<ItemStack> outputs, int power, int time) implements RebornRecipe {
+	record Default(RecipeType<? extends RebornRecipe> type, List<SizedIngredient> ingredients, List<ItemStack> outputs, int power, int time) implements RebornRecipe {
 	}
 
-	RecipeType<?> type();
+	RecipeType<? extends RebornRecipe> type();
 	List<SizedIngredient> ingredients();
 	List<ItemStack> outputs();
 	int power();
 	int time();
 
+	// TODO figure out getDisplays
+//	@Override
+//	default ItemStack createIcon() {
+//		Identifier typeId = Registries.RECIPE_TYPE.getId(type());
+//		Optional<Item> catalyst = Registries.ITEM.getOptionalValue(typeId);
+//
+//		if (catalyst.isPresent()) {
+//			return new ItemStack(catalyst.get());
+//		}
+//
+//		RebornCore.LOGGER.warn("Missing toast icon for {}!", typeId);
+//		return Recipe.super.createIcon();
+//	}
+
 	@Override
-	default ItemStack createIcon() {
-		Identifier typeId = Registries.RECIPE_TYPE.getId(type());
-		Optional<Item> catalyst = Registries.ITEM.getOrEmpty(typeId);
-
-		if (catalyst.isPresent()) {
-			return new ItemStack(catalyst.get());
-		}
-
-		RebornCore.LOGGER.warn("Missing toast icon for {}!", typeId);
-		return Recipe.super.createIcon();
+	default RecipeSerializer<? extends RebornRecipe> getSerializer() {
+		return (RecipeSerializer<? extends RebornRecipe>) Registries.RECIPE_SERIALIZER.get(Registries.RECIPE_TYPE.getId(getType()));
 	}
 
 	@Override
-	default RecipeSerializer<?> getSerializer() {
-		return Registries.RECIPE_SERIALIZER.get(Registries.RECIPE_TYPE.getId(getType()));
-	}
-
-	@Override
-	default RecipeType<?> getType() {
+	default RecipeType<? extends RebornRecipe> getType() {
 		return type();
-	}
-
-	/**
-	 * use the {@link SizedIngredient} version to ensure stack sizes are checked
-	 */
-	@Deprecated
-	@Override
-	default DefaultedList<Ingredient> getIngredients() {
-		return this.ingredients().stream().map(SizedIngredient::ingredient).collect(DefaultedListCollector.toList());
 	}
 
 	/**
@@ -128,6 +122,11 @@ public interface RebornRecipe extends Recipe<RebornRecipeInput> {
 		return true;
 	}
 
+	@Override
+	default IngredientPlacement getIngredientPlacement() {
+		return IngredientPlacement.NONE;
+	}
+
 	// Done as our recipes do not support these functions, hopefully nothing blindly calls them
 	@Deprecated
 	@Override
@@ -135,34 +134,13 @@ public interface RebornRecipe extends Recipe<RebornRecipeInput> {
 		throw new UnsupportedOperationException();
 	}
 
-
 	@Override
 	default ItemStack craft(RebornRecipeInput inventory, RegistryWrapper.WrapperLookup lookup) {
 		throw new UnsupportedOperationException();
 	}
 
-	@Deprecated
 	@Override
-	default boolean fits(int width, int height) {
-		throw new UnsupportedOperationException();
-	}
-
-
-	/**
-	 * Do not call directly, this is implemented only as a fallback.
-	 * {@link RebornRecipe#outputs()} will return all the outputs
-	 */
-	@Deprecated
-	@Override
-	default ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
-		if (outputs().isEmpty()) {
-			return ItemStack.EMPTY;
-		}
-		return outputs().get(0);
-	}
-
-	@Override
-	default DefaultedList<ItemStack> getRemainder(RebornRecipeInput input) {
+	default RecipeBookCategory getRecipeBookCategory() {
 		throw new UnsupportedOperationException();
 	}
 
