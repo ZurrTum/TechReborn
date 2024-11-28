@@ -1,5 +1,7 @@
 
+Tests:
+- Nuke behavior
+- non isolated cable blocks
 
 TODOs:
-- check Nuke behavior
 - map colors of storage blocks
