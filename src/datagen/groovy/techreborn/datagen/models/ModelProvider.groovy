@@ -24,11 +24,11 @@
 
 package techreborn.datagen.models
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
-import net.minecraft.data.client.BlockStateModelGenerator
-import net.minecraft.data.client.ItemModelGenerator
-import net.minecraft.data.client.Models
+import net.fabricmc.fabric.api.client.datagen.v1.FabricDataOutput
+import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider
+import net.minecraft.client.data.BlockStateModelGenerator;
+import net.minecraft.client.data.ItemModelGenerator
+import net.minecraft.client.data.Models
 import net.minecraft.data.family.BlockFamilies
 import net.minecraft.registry.RegistryWrapper
 import techreborn.init.TRContent
