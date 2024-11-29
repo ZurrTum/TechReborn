@@ -48,7 +48,7 @@ import techreborn.blockentity.machine.multiblock.FluidReplicatorBlockEntity;
 import java.util.List;
 import java.util.function.Function;
 
-public record FluidReplicatorRecipe(RecipeType<?> type, List<SizedIngredient> ingredients, List<ItemStack> outputs, int power, int time, FluidInstance fluid) implements RebornFluidRecipe {
+public record FluidReplicatorRecipe(RecipeType<? extends FluidReplicatorRecipe> type, List<SizedIngredient> ingredients, List<ItemStack> outputs, int power, int time, FluidInstance fluid) implements RebornFluidRecipe {
 	public static final Function<RecipeType<FluidReplicatorRecipe>, MapCodec<FluidReplicatorRecipe>> CODEC = type -> RecordCodecBuilder.mapCodec(instance -> instance.group(
 		Codec.list(SizedIngredient.CODEC.codec()).fieldOf("ingredients").forGetter(RebornRecipe::ingredients),
 		Codec.list(ItemStack.CODEC).fieldOf("outputs").forGetter(RebornRecipe::outputs),

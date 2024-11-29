@@ -40,7 +40,7 @@ import techreborn.init.TRContent;
 import java.util.List;
 import java.util.function.Function;
 
-public record AssemblingMachineRecipe(RecipeType<?> type, List<SizedIngredient> ingredients, List<ItemStack> outputs, int power, int time) implements RebornRecipe {
+public record AssemblingMachineRecipe(RecipeType<? extends AssemblingMachineRecipe> type, List<SizedIngredient> ingredients, List<ItemStack> outputs, int power, int time) implements RebornRecipe {
 	public static Function<RecipeType<AssemblingMachineRecipe>, MapCodec<AssemblingMachineRecipe>> CODEC = type -> RecordCodecBuilder.mapCodec(instance -> instance.group(
 		Codec.list(SizedIngredient.CODEC.codec()).fieldOf("ingredients").forGetter(RebornRecipe::ingredients),
 		Codec.list(ItemStack.CODEC).fieldOf("outputs").forGetter(RebornRecipe::outputs),
@@ -55,8 +55,9 @@ public record AssemblingMachineRecipe(RecipeType<?> type, List<SizedIngredient> 
 		(ingredients, outputs, power, time) -> new AssemblingMachineRecipe(type, ingredients, outputs, power, time)
 	);
 
-	@Override
-	public ItemStack createIcon() {
-		return new ItemStack(TRContent.Machine.ASSEMBLY_MACHINE);
-	}
+	// TODO
+//	@Override
+//	public ItemStack createIcon() {
+//		return new ItemStack(TRContent.Machine.ASSEMBLY_MACHINE);
+//	}
 }

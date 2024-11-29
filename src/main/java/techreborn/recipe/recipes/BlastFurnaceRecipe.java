@@ -42,7 +42,7 @@ import techreborn.init.TRContent;
 import java.util.List;
 import java.util.function.Function;
 
-public record BlastFurnaceRecipe(RecipeType<?> type, List<SizedIngredient> ingredients, List<ItemStack> outputs, int power, int time, int heat) implements RebornRecipe {
+public record BlastFurnaceRecipe(RecipeType<? extends BlastFurnaceRecipe> type, List<SizedIngredient> ingredients, List<ItemStack> outputs, int power, int time, int heat) implements RebornRecipe {
 	public static Function<RecipeType<BlastFurnaceRecipe>, MapCodec<BlastFurnaceRecipe>> CODEC = type -> RecordCodecBuilder.mapCodec(instance -> instance.group(
 		Codec.list(SizedIngredient.CODEC.codec()).fieldOf("ingredients").forGetter(RebornRecipe::ingredients),
 		Codec.list(ItemStack.CODEC).fieldOf("outputs").forGetter(RebornRecipe::outputs),
@@ -59,10 +59,10 @@ public record BlastFurnaceRecipe(RecipeType<?> type, List<SizedIngredient> ingre
 		(ingredients, outputs, power, time, heat) -> new BlastFurnaceRecipe(type, ingredients, outputs, power, time, heat)
 	);
 
-	@Override
-	public ItemStack createIcon() {
-		return new ItemStack(TRContent.Machine.INDUSTRIAL_BLAST_FURNACE);
-	}
+//	@Override
+//	public ItemStack createIcon() {
+//		return new ItemStack(TRContent.Machine.INDUSTRIAL_BLAST_FURNACE);
+//	}
 
 	public int getHeat() {
 		return heat;

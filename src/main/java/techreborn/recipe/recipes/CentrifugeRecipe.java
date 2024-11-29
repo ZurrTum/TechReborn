@@ -40,7 +40,7 @@ import techreborn.init.TRContent;
 import java.util.List;
 import java.util.function.Function;
 
-public record CentrifugeRecipe(RecipeType<?> type, List<SizedIngredient> ingredients, List<ItemStack> outputs, int power, int time) implements RebornRecipe {
+public record CentrifugeRecipe(RecipeType<? extends CentrifugeRecipe> type, List<SizedIngredient> ingredients, List<ItemStack> outputs, int power, int time) implements RebornRecipe {
 	public static Function<RecipeType<CentrifugeRecipe>, MapCodec<CentrifugeRecipe>> CODEC = type -> RecordCodecBuilder.mapCodec(instance -> instance.group(
 		Codec.list(SizedIngredient.CODEC.codec()).fieldOf("ingredients").forGetter(RebornRecipe::ingredients),
 		Codec.list(ItemStack.CODEC).fieldOf("outputs").forGetter(RebornRecipe::outputs),
@@ -55,9 +55,9 @@ public record CentrifugeRecipe(RecipeType<?> type, List<SizedIngredient> ingredi
 		(ingredients, outputs, power, time) -> new CentrifugeRecipe(type, ingredients, outputs, power, time)
 	);
 
-	@Override
-	public ItemStack createIcon() {
-		return new ItemStack(TRContent.Machine.INDUSTRIAL_CENTRIFUGE);
-	}
+//	@Override
+//	public ItemStack createIcon() {
+//		return new ItemStack(TRContent.Machine.INDUSTRIAL_CENTRIFUGE);
+//	}
 
 }

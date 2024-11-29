@@ -44,7 +44,7 @@ import techreborn.init.TRContent;
 import java.util.List;
 import java.util.function.Function;
 
-public record FluidGeneratorRecipe(RecipeType<?> type, int power, Fluid fluid) implements RebornRecipe {
+public record FluidGeneratorRecipe(RecipeType<? extends FluidGeneratorRecipe> type, int power, Fluid fluid) implements RebornRecipe {
 	public static Function<RecipeType<FluidGeneratorRecipe>, MapCodec<FluidGeneratorRecipe>> CODEC = type -> RecordCodecBuilder.mapCodec(instance -> instance.group(
 		Codecs.POSITIVE_INT.fieldOf("power").forGetter(RebornRecipe::power),
 		Registries.FLUID.getEntryCodec().fieldOf("fluid").forGetter(FluidGeneratorRecipe::fluidRegistryEntry)
@@ -55,7 +55,7 @@ public record FluidGeneratorRecipe(RecipeType<?> type, int power, Fluid fluid) i
 		(power, fluid) -> new FluidGeneratorRecipe(type, power, fluid)
 	);
 
-	public FluidGeneratorRecipe(RecipeType<?> type, int power, RegistryEntry<Fluid> fluid) {
+	public FluidGeneratorRecipe(RecipeType<? extends FluidGeneratorRecipe> type, int power, RegistryEntry<Fluid> fluid) {
 		this(type, power, fluid.value());
 	}
 
@@ -74,24 +74,24 @@ public record FluidGeneratorRecipe(RecipeType<?> type, int power, Fluid fluid) i
 		return 0;
 	}
 
-	@Override
-	public ItemStack createIcon() {
-		final RecipeType<?> type =getType();
-
-		if (type == ModRecipes.THERMAL_GENERATOR) {
-			return new ItemStack(TRContent.Machine.THERMAL_GENERATOR);
-		} else if (type == ModRecipes.GAS_GENERATOR) {
-			return new ItemStack(TRContent.Machine.GAS_TURBINE);
-		} else if (type == ModRecipes.DIESEL_GENERATOR) {
-			return new ItemStack(TRContent.Machine.DIESEL_GENERATOR);
-		} else if (type == ModRecipes.SEMI_FLUID_GENERATOR) {
-			return new ItemStack(TRContent.Machine.SEMI_FLUID_GENERATOR);
-		} else if (type == ModRecipes.PLASMA_GENERATOR) {
-			return new ItemStack(TRContent.Machine.PLASMA_GENERATOR);
-		}
-
-		return RebornRecipe.super.createIcon();
-	}
+//	@Override
+//	public ItemStack createIcon() {
+//		final RecipeType<?> type =getType();
+//
+//		if (type == ModRecipes.THERMAL_GENERATOR) {
+//			return new ItemStack(TRContent.Machine.THERMAL_GENERATOR);
+//		} else if (type == ModRecipes.GAS_GENERATOR) {
+//			return new ItemStack(TRContent.Machine.GAS_TURBINE);
+//		} else if (type == ModRecipes.DIESEL_GENERATOR) {
+//			return new ItemStack(TRContent.Machine.DIESEL_GENERATOR);
+//		} else if (type == ModRecipes.SEMI_FLUID_GENERATOR) {
+//			return new ItemStack(TRContent.Machine.SEMI_FLUID_GENERATOR);
+//		} else if (type == ModRecipes.PLASMA_GENERATOR) {
+//			return new ItemStack(TRContent.Machine.PLASMA_GENERATOR);
+//		}
+//
+//		return RebornRecipe.super.createIcon();
+//	}
 
 	public Fluid getFluid() {
 		return fluid;
