@@ -60,8 +60,8 @@ public class PaintingToolItem extends Item {
 
 		BlockState blockState = context.getWorld().getBlockState(context.getBlockPos());
 		if (player.isSneaking()) {
-			boolean opaqueFullCube = blockState.isOpaqueFullCube(context.getWorld(), context.getBlockPos())
-				&& blockState.getBlock().getDefaultState().isOpaqueFullCube(context.getWorld(), context.getBlockPos());
+			boolean opaqueFullCube = blockState.isOpaqueFullCube()
+				&& blockState.getBlock().getDefaultState().isOpaqueFullCube();
 
 			if (opaqueFullCube || blockState.isIn(TRContent.BlockTags.NONE_SOLID_COVERS)) {
 				context.getStack().set(TRDataComponentTypes.PAINTING_COVER, blockState);
