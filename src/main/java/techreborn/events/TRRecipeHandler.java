@@ -38,21 +38,22 @@ public class TRRecipeHandler {
 
 
 	public static void unlockTRRecipes(ServerPlayerEntity playerMP) {
-		List<Identifier> recipeList = playerMP.getWorld().getRecipeManager().getAllOfType(RecipeType.CRAFTING).stream()
-			.filter(TRRecipeHandler::isRecipeValid)
-			.map(RecipeEntry::id)
-			.toList();
-		playerMP.unlockRecipes(recipeList);
+		throw new UnsupportedOperationException();
+//		List<Identifier> recipeList = playerMP.getWorld().getRecipeManager().getAllOfType(RecipeType.CRAFTING).stream()
+//			.filter(TRRecipeHandler::isRecipeValid)
+//			.map(RecipeEntry::id)
+//			.toList();
+//		playerMP.unlockRecipes(recipeList);
 	}
 
-	private static boolean isRecipeValid(RecipeEntry<CraftingRecipe> recipe) {
-		if (recipe.id() == null) {
-			return false;
-		}
-		if (!recipe.id().getNamespace().equals(TechReborn.MOD_ID)) {
-			return false;
-		}
-		return recipe.value().getIngredients().stream().noneMatch(ingredient -> ingredient.test(TRContent.Parts.UU_MATTER.getStack()));
-	}
+//	private static boolean isRecipeValid(RecipeEntry<CraftingRecipe> recipe) {
+//		if (recipe.id() == null) {
+//			return false;
+//		}
+//		if (!recipe.id().getNamespace().equals(TechReborn.MOD_ID)) {
+//			return false;
+//		}
+//		return recipe.value().getIngredients().stream().noneMatch(ingredient -> ingredient.test(TRContent.Parts.UU_MATTER.getStack()));
+//	}
 
 }
