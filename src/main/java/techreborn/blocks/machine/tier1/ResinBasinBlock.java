@@ -32,6 +32,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
@@ -111,7 +112,9 @@ public class ResinBasinBlock extends BaseBlockEntityProvider {
 		if (worldIn.getBlockState(pos.offset(facing.getOpposite())).getBlock() != TRContent.RUBBER_LOG) {
 			worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
 			WorldUtils.dropItem(this.asItem(), worldIn, pos);
-			placer.sendMessage(Text.translatable("techreborn.tooltip.invalid_basin_placement"));
+			if (placer instanceof ServerPlayerEntity player) {
+				player.sendMessage(Text.translatable("techreborn.tooltip.invalid_basin_placement"));
+			}
 		}
 	}
 
