@@ -82,7 +82,8 @@ public class BlockOutlineRenderer implements WorldRenderEvents.BlockOutline {
 				shape = VoxelShapes.union(shape, voxelShape);
 			}
 
-			WorldRenderer.drawShapeOutline(worldRenderContext.matrixStack(), worldRenderContext.consumers().getBuffer(RenderLayer.getLines()), shape, (double)targetPos.getX() - context.cameraX(), (double)targetPos.getY() - context.cameraY(), (double)targetPos.getZ() - context.cameraZ(), 0.0F, 0.0F, 0.0F, 0.4F, true);
+			// TODO find replacement
+			// WorldRenderer.drawShapeOutline(worldRenderContext.matrixStack(), worldRenderContext.consumers().getBuffer(RenderLayer.getLines()), shape, (double)targetPos.getX() - context.cameraX(), (double)targetPos.getY() - context.cameraY(), (double)targetPos.getZ() - context.cameraZ(), 0.0F, 0.0F, 0.0F, 0.4F, true);
 		}
 
 		return true;
