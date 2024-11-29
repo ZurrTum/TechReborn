@@ -34,7 +34,6 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
@@ -60,10 +59,7 @@ public class NanosaberItem extends SwordItem implements RcEnergyItem {
 
 	// 1ME max charge with 2k charge rate
 	public NanosaberItem() {
-		super(TRToolMaterials.NANOSABER, new Item.Settings()
-			.maxDamage(0)
-			.attributeModifiers(PickaxeItem.createAttributeModifiers(TRToolMaterials.NANOSABER, 1, 1))
-		);
+		super(TRToolMaterials.NANOSABER, 1f, 1f, new Item.Settings().maxDamage(0));
 	}
 
 	// SwordItem
