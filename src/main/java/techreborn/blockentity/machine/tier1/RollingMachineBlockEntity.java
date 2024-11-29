@@ -117,7 +117,7 @@ public class RollingMachineBlockEntity extends PowerAcceptorBlockEntity
 		charge(10);
 
 		CraftingInventory craftMatrix = getCraftingMatrix(true);
-		currentRecipe = findMatchingRecipe(craftMatrix, world);
+		currentRecipe = findMatchingRecipe(rebornRecipeInput(craftMatrix), world);
 		if (currentRecipe != null) {
 			if (world.getTime() % 2 == 0) {
 				balanceRecipe(craftMatrix);
@@ -331,7 +331,7 @@ public class RollingMachineBlockEntity extends PowerAcceptorBlockEntity
 	}
 
 	public boolean canMake(CraftingInventory craftMatrix) {
-		ItemStack stack = findMatchingRecipeOutput(craftMatrix, this.world);
+		ItemStack stack = findMatchingRecipeOutput(rebornRecipeInput(craftMatrix), this.world);
 		if (stack.isEmpty()) {
 			return false;
 		}
@@ -434,7 +434,7 @@ public class RollingMachineBlockEntity extends PowerAcceptorBlockEntity
 			.slot(0, 30, 22).slot(1, 48, 22).slot(2, 66, 22)
 			.slot(3, 30, 40).slot(4, 48, 40).slot(5, 66, 40)
 			.slot(6, 30, 58).slot(7, 48, 58).slot(8, 66, 58)
-			.onCraft(inv -> this.inventory.setStack(1, findMatchingRecipeOutput(getCraftingMatrix(), this.world)))
+			.onCraft(inv -> this.inventory.setStack(1, findMatchingRecipeOutput(rebornRecipeInput(getCraftingMatrix()), this.world)))
 			.outputSlot(9, 124, 40)
 			.energySlot(10, 8, 70)
 			.syncEnergyValue().sync(PacketCodecs.INTEGER, this::getBurnTime, this::setBurnTime).sync(PacketCodecs.INTEGER, this::getLockedInt, this::setLockedInt)
@@ -499,5 +499,9 @@ public class RollingMachineBlockEntity extends PowerAcceptorBlockEntity
 			stacks.add(inventory.getStack(i));
 		}
 		return CraftingRecipeInput.create(inventory.getWidth(), inventory.getHeight(), stacks);
+	}
+
+	private static RebornRecipeInput rebornRecipeInput(CraftingInventory inventory) {
+		throw new UnsupportedOperationException();
 	}
 }
