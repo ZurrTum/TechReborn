@@ -25,7 +25,7 @@
 package techreborn.datagen.mixin
 
 import net.minecraft.block.Block
-import net.minecraft.data.client.TextureMap
+import net.minecraft.client.data.TextureMap
 import net.minecraft.item.Item
 import net.minecraft.util.Identifier
 import org.spongepowered.asm.mixin.Mixin
