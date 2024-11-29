@@ -24,7 +24,7 @@
 
 package techreborn.datagen.recipes.machine.rolling_machine
 
-import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder
+import net.minecraft.data.recipe.CraftingRecipeJsonBuilder
 import net.minecraft.item.ItemStack
 import net.minecraft.recipe.RawShapedRecipe
 import net.minecraft.recipe.ShapedRecipe

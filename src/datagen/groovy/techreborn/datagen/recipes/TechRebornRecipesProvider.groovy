@@ -28,7 +28,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
 import net.minecraft.advancement.AdvancementCriterion
 import net.minecraft.advancement.criterion.InventoryChangedCriterion
-import net.minecraft.data.server.recipe.RecipeExporter
+import net.minecraft.data.recipe.RecipeGenerator
+import net.minecraft.data.recipe.RecipeExporter
 import net.minecraft.fluid.Fluid
 import net.minecraft.item.Item
 import net.minecraft.item.ItemConvertible
@@ -70,7 +71,7 @@ abstract class TechRebornRecipesProvider extends FabricRecipeProvider {
 	}
 
 	@Override
-	final void generate(RecipeExporter exporter) {
+	protected RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup wrapperLookup, RecipeExporter recipeExporter) {
 		this.exporter = exporter
 		generateRecipes()
 	}
