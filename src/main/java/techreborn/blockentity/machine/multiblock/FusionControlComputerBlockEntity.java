@@ -443,7 +443,7 @@ public class FusionControlComputerBlockEntity extends GenericMachineBlockEntity 
 			return Identifier.of("null", "null");
 		}
 
-		return currentRecipeEntry.id();
+		return currentRecipeEntry.id().getValue();
 	}
 
 	public void setCurrentRecipeID(Identifier currentRecipeID) {
