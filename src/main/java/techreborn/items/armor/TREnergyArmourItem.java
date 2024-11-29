@@ -42,7 +42,7 @@ public abstract class TREnergyArmourItem extends ArmorItem implements RcEnergyIt
 	private final RcEnergyTier energyTier;
 
 	public TREnergyArmourItem(ArmorMaterial material, EquipmentType slot, long maxCharge, RcEnergyTier energyTier) {
-		super(material, slot, new Item.Settings().maxCount(1));
+		super(material, slot, new Item.Settings().enchantable(material.enchantmentValue()).maxCount(1));
 		this.maxCharge = maxCharge;
 		this.energyTier = energyTier;
 	}
@@ -55,11 +55,6 @@ public abstract class TREnergyArmourItem extends ArmorItem implements RcEnergyIt
 
 	@Override
 	public boolean isItemBarVisible(ItemStack stack) {
-		return true;
-	}
-
-	@Override
-	public boolean isEnchantable(ItemStack stack) {
 		return true;
 	}
 
