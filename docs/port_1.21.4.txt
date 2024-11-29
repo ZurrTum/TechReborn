@@ -7,6 +7,7 @@ Tests:
 - check items fuel time
 - Lightning Rod behavior
 - check TR tool speed and attack damage
+- AutoCraftingTable
 
 TODOs:
 - map colors of storage blocks

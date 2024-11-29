@@ -39,7 +39,6 @@ import net.minecraft.recipe.input.CraftingRecipeInput;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -61,7 +60,10 @@ import techreborn.init.ModSounds;
 import techreborn.init.TRBlockEntities;
 import techreborn.init.TRContent;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -165,9 +167,9 @@ public class AutoCraftingTableBlockEntity extends PowerAcceptorBlockEntity
 
 		if (!recipe.matches(getRecipeInput(), world)) return false;
 
-		if (!hasOutputSpace(recipe.getResult(world.getRegistryManager()), OUTPUT_SLOT)) return false;
+		if (!hasOutputSpace(recipe.craft(getRecipeInput(), world.getRegistryManager()), OUTPUT_SLOT)) return false;
 
-		DefaultedList<ItemStack> remainingStacks = recipe.getRemainder(getRecipeInput());
+		DefaultedList<ItemStack> remainingStacks = recipe.getRecipeRemainders(getRecipeInput());
 
 		// Need to check whole list in case of several different reminders
 		boolean canFitReminder = true;
@@ -210,11 +212,11 @@ public class AutoCraftingTableBlockEntity extends PowerAcceptorBlockEntity
 		if (recipe == null || !canMake(recipe)) {
 			return false;
 		}
-		DefaultedList<Ingredient> ingredients = recipe.getIngredients();
+		List<Ingredient> ingredients = recipe.getIngredientPlacement().getIngredients();
 		// each slot can only be used once because in canMake we only checked if decrement by 1 still retains the recipe
 		// otherwise recipes can break when an ingredient is used multiple times
 		boolean[] slotUsed = new boolean[CRAFTING_AREA];
-		for (int i = 0; i < recipe.getIngredients().size(); i++) {
+		for (int i = 0; i < ingredients.size(); i++) {
 			Ingredient ingredient = ingredients.get(i);
 			// Looks for the best slot to take it from
 			ItemStack bestSlot = inventory.getStack(i);
@@ -246,7 +248,7 @@ public class AutoCraftingTableBlockEntity extends PowerAcceptorBlockEntity
 		if (output.isEmpty()) {
 			inventory.setStack(OUTPUT_SLOT, outputStack.copy());
 		} else {
-			output.increment(recipe.getResult(world.getRegistryManager()).getCount());
+			output.increment(recipe.craft(getRecipeInput(), world.getRegistryManager()).getCount());
 		}
 		return true;
 	}
@@ -288,14 +290,14 @@ public class AutoCraftingTableBlockEntity extends PowerAcceptorBlockEntity
 			return Optional.empty();
 		}
 		List<Integer> possibleSlots = new ArrayList<>();
-		for (int s = 0; s < currentRecipe.getIngredients().size(); s++) {
+		for (int s = 0; s < currentRecipe.getIngredientPlacement().getIngredients().size(); s++) {
 			for (int i = 0; i < CRAFTING_AREA; i++) {
 				if (possibleSlots.contains(i)) {
 					continue;
 				}
 				ItemStack stackInSlot = inventory.getStack(i);
-				Ingredient ingredient = currentRecipe.getIngredients().get(s);
-				if (ingredient != Ingredient.EMPTY && ingredient.test(sourceStack)) {
+				Ingredient ingredient = currentRecipe.getIngredientPlacement().getIngredients().get(s);
+				if (ingredient != null && ingredient.test(sourceStack)) {
 					if (stackInSlot.getItem() == sourceStack.getItem()) {
 						possibleSlots.add(i);
 						break;
