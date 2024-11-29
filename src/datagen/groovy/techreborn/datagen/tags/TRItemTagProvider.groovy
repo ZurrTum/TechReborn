@@ -92,8 +92,14 @@ class TRItemTagProvider extends ItemTagProvider {
 			.add(TRContent.RUBBER_WOOD.asItem())
 			.add(TRContent.STRIPPED_RUBBER_WOOD.asItem())
 
-		getOrCreateTagBuilder(TRContent.ItemTags.RUBBER_LOGS)
-			.add(TRContent.RUBBER_LOG.asItem())
+		getOrCreateTagBuilder(TRContent.ItemTags.BRONZE_TOOL_MATERIALS)
+			.addTag(TRContent.Ingots.BRONZE)
+		getOrCreateTagBuilder(TRContent.ItemTags.RUBY_TOOL_MATERIALS)
+			.addTag(TRContent.Gems.RUBY)
+		getOrCreateTagBuilder(TRContent.ItemTags.SAPPHIRE_TOOL_MATERIALS)
+			.addTag(TRContent.Gems.SAPPHIRE)
+		getOrCreateTagBuilder(TRContent.ItemTags.PERIDOT_TOOL_MATERIALS)
+			.addTag(TRContent.Gems.PERIDOT)
 
 		getOrCreateTagBuilder(ItemTags.BEACON_PAYMENT_ITEMS)
 			.addTag(TRContent.ItemTags.INGOTS)
