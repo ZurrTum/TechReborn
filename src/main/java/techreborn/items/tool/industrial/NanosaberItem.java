@@ -96,11 +96,6 @@ public class NanosaberItem extends SwordItem implements RcEnergyItem {
 	}
 
 	@Override
-	public boolean isEnchantable(ItemStack stack) {
-		return true;
-	}
-
-	@Override
 	public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
 		TRItemUtils.buildActiveTooltip(stack, tooltip);
 	}

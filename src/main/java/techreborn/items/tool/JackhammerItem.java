@@ -88,11 +88,6 @@ public class JackhammerItem extends PickaxeItem implements RcEnergyItem {
 	}
 
 	@Override
-	public boolean isEnchantable(ItemStack stack) {
-		return true;
-	}
-
-	@Override
 	public int getItemBarStep(ItemStack stack) {
 		return ItemUtils.getPowerForDurabilityBar(stack);
 	}
