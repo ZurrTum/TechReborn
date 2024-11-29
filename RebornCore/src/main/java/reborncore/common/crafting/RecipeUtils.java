@@ -50,7 +50,7 @@ public class RecipeUtils {
 	}
 
 	private static <T extends RebornRecipe> Stream<RecipeEntry<T>> streamRecipeEntries(World world, RecipeType<T> type) {
-		return world.getRecipeManager().getAllOfType(type).stream();
+		throw new UnsupportedOperationException();
 	}
 
 	/**

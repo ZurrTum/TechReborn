@@ -45,7 +45,7 @@ import java.util.function.Predicate;
 public record SizedIngredient(int count, Ingredient ingredient) implements Predicate<ItemStack> {
 	public static MapCodec<SizedIngredient> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
 		Codec.INT.optionalFieldOf("count", 1).forGetter(SizedIngredient::count),
-		MapCodec.assumeMapUnsafe(Ingredient.DISALLOW_EMPTY_CODEC).forGetter(SizedIngredient::ingredient)
+		MapCodec.assumeMapUnsafe(Ingredient.CODEC).forGetter(SizedIngredient::ingredient)
 	).apply(instance, SizedIngredient::new));
 	public static PacketCodec<RegistryByteBuf, SizedIngredient> PACKET_CODEC = PacketCodec.tuple(
 		PacketCodecs.INTEGER, SizedIngredient::count,
@@ -68,9 +68,6 @@ public record SizedIngredient(int count, Ingredient ingredient) implements Predi
 	}
 
 	public List<ItemStack> getPreviewStacks() {
-		return Arrays.stream(ingredient.getMatchingStacks())
-			.map(ItemStack::copy)
-			.peek(itemStack -> itemStack.setCount(count))
-			.toList();
+		throw new UnsupportedOperationException();
 	}
 }
