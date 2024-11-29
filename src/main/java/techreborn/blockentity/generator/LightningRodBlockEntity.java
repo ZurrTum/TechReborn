@@ -98,7 +98,7 @@ public class LightningRodBlockEntity extends PowerAcceptorBlockEntity implements
 	}
 
 	public float getLightningStrikeMultiplier() {
-		final float actualHeight = world.getTopY();
+		final float actualHeight = world.getTopYInclusive();
 		final float groundLevel = world.getSeaLevel() + 1;
 		for (int i = pos.getY() + 1; i < actualHeight; i++) {
 			if (!isValidIronFence(i)) {
