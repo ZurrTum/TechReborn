@@ -45,7 +45,7 @@ public class JackhammerItem extends PickaxeItem implements RcEnergyItem {
 	protected final float unpoweredSpeed = 0.5F;
 
 	public JackhammerItem(ToolMaterial material, int energyCapacity, RcEnergyTier tier, int cost) {
-		super(material, new Item.Settings().maxDamage(0));
+		super(material, -2f, -2.8f, new Item.Settings().maxDamage(0));
 		this.maxCharge = energyCapacity;
 		this.tier = tier;
 		this.cost = cost;

@@ -43,7 +43,7 @@ public class DrillItem extends MiningToolItem implements RcEnergyItem {
 
 
 	public DrillItem(ToolMaterial material, int energyCapacity, RcEnergyTier tier, int cost, float poweredSpeed) {
-		super(material, TRContent.BlockTags.DRILL_MINEABLE, new Item.Settings().maxDamage(0));
+		super(material, TRContent.BlockTags.DRILL_MINEABLE, -2f, -2.8f, new Item.Settings().maxDamage(0));
 		this.maxCharge = energyCapacity;
 		this.tier = tier;
 		this.cost = cost;

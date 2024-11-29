@@ -88,7 +88,7 @@ public class DebugToolItem extends Item {
 		if (context.getWorld().isClient || context.getPlayer() == null) {
 			return;
 		}
-		context.getPlayer().sendMessage(message);
+		context.getPlayer().sendMessage(message, false); // TODO check if this is correct boolean
 	}
 
 	private String getPropertyString(Entry<Property<?>, Comparable<?>> entryIn) {
