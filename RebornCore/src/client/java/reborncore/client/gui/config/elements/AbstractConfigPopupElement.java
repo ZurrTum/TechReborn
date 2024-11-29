@@ -139,7 +139,7 @@ public abstract class AbstractConfigPopupElement extends ElementBase {
 			matrixStack.multiply(quaternion);
 		}
 
-		VertexConsumerProvider.Immediate immediate = drawContext.getVertexConsumers();
+		VertexConsumerProvider.Immediate immediate = drawContext.vertexConsumers;
 		dispatcher.getModelRenderer().render(matrixStack.peek(), immediate.getBuffer(RenderLayer.getSolid()), actualState, model, 1F, 1F, 1F, OverlayTexture.getU(15F), OverlayTexture.DEFAULT_UV);
 		immediate.draw();
 		matrixStack.pop();
