@@ -44,6 +44,7 @@ import reborncore.api.IToolDrop;
 import reborncore.api.blockentity.InventoryProvider;
 import reborncore.common.blockentity.MachineBaseBlockEntity;
 import reborncore.common.blocks.BlockMachineBase;
+import reborncore.common.crafting.RebornRecipeInput;
 import reborncore.common.crafting.RecipeUtils;
 import reborncore.common.powerSystem.PowerAcceptorBlockEntity;
 import reborncore.common.screen.BuiltScreenHandler;
@@ -51,11 +52,11 @@ import reborncore.common.screen.BuiltScreenHandlerProvider;
 import reborncore.common.screen.builder.ScreenHandlerBuilder;
 import reborncore.common.util.ItemUtils;
 import reborncore.common.util.RebornInventory;
-import techreborn.recipe.recipes.RollingMachineRecipe;
 import techreborn.config.TechRebornConfig;
 import techreborn.init.ModRecipes;
 import techreborn.init.TRBlockEntities;
 import techreborn.init.TRContent;
+import techreborn.recipe.recipes.RollingMachineRecipe;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -200,10 +201,10 @@ public class RollingMachineBlockEntity extends PowerAcceptorBlockEntity
 			return Optional.empty();
 		}
 		List<Integer> possibleSlots = new ArrayList<>();
-		for (int s = 0; s < currentRecipe.getIngredients().size(); s++) {
+		for (int s = 0; s < currentRecipe.getIngredientPlacement().getIngredients().size(); s++) {
 			ItemStack stackInSlot = inventory.getStack(s);
-			Ingredient ingredient = currentRecipe.getIngredients().get(s);
-			if (ingredient != Ingredient.EMPTY && ingredient.test(sourceStack)) {
+			Ingredient ingredient = currentRecipe.getIngredientPlacement().getIngredients().get(s);
+			if (ingredient != null && ingredient.test(sourceStack)) {
 				if (stackInSlot.isEmpty()) {
 					possibleSlots.add(s);
 				} else if (stackInSlot.getItem() == sourceStack.getItem()) {
@@ -345,22 +346,21 @@ public class RollingMachineBlockEntity extends PowerAcceptorBlockEntity
 		return RecipeUtils.getRecipes(world, ModRecipes.ROLLING_MACHINE);
 	}
 
-	public ItemStack findMatchingRecipeOutput(CraftingInventory inv, World world) {
+	public ItemStack findMatchingRecipeOutput(RebornRecipeInput inv, World world) {
 		RollingMachineRecipe recipe = findMatchingRecipe(inv, world);
 		if (recipe == null) {
 			return ItemStack.EMPTY;
 		}
-		return recipe.getResult(getWorld().getRegistryManager());
+		return recipe.craft(inv, getWorld().getRegistryManager());
 	}
 
-	public RollingMachineRecipe findMatchingRecipe(CraftingInventory inv, World world) {
+	public RollingMachineRecipe findMatchingRecipe(RebornRecipeInput input, World world) {
 		if (isCorrectCachedInventory()){
 			return lastRecipe;
 		}
 		cachedInventoryStructure = fastIntlayout();
-		CraftingRecipeInput input = recipeInput(inv);
 		for (RollingMachineRecipe recipe : getAllRecipe(world)) {
-			if (recipe.getShapedRecipe().matches(input, world)) {
+			if (recipe.getShapedRecipe().matches(RollingMachineRecipe.toCraftingRecipeInput(input), world)) {
 				lastRecipe = recipe;
 				return recipe;
 			}
