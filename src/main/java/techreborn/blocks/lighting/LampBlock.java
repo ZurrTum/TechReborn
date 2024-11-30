@@ -60,8 +60,8 @@ public class LampBlock extends BaseBlockEntityProvider {
 	private final int cost;
 	private static final int brightness = 15;
 
-	public LampBlock(int cost, double depth, double width) {
-		super(TRBlockSettings.lightBlock().luminance(createLightLevelFromBlockState()));
+	public LampBlock(String name, int cost, double depth, double width) {
+		super(TRBlockSettings.lightBlock(name).luminance(createLightLevelFromBlockState()));
 		this.shape = genCuboidShapes(depth, width);
 		this.cost = cost;
 		this.setDefaultState(this.getStateManager().getDefaultState().with(FACING, Direction.NORTH).with(ACTIVE, false));

@@ -53,8 +53,8 @@ public class TankUnitBlock extends BlockMachineBase {
 
 	public final TRContent.TankUnit unitType;
 
-	public TankUnitBlock(TRContent.TankUnit unitType) {
-		super(TRBlockSettings.tankUnit());
+	public TankUnitBlock(String name, TRContent.TankUnit unitType) {
+		super(TRBlockSettings.tankUnit(name));
 		this.unitType = unitType;
 	}
 

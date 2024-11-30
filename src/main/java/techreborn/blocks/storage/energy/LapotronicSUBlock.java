@@ -41,8 +41,8 @@ import techreborn.blockentity.storage.energy.lesu.LapotronicSUBlockEntity;
 
 public class LapotronicSUBlock extends EnergyStorageBlock {
 
-	public LapotronicSUBlock() {
-		super("LESU", GuiType.LESU);
+	public LapotronicSUBlock(String name) {
+		super(name, "LESU", GuiType.LESU);
 	}
 
 	@Override

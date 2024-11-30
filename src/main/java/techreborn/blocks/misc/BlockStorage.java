@@ -28,7 +28,7 @@ import reborncore.common.BaseBlock;
 import techreborn.init.TRBlockSettings;
 
 public class BlockStorage extends BaseBlock {
-	public BlockStorage(boolean isHot, float hardness, float resistance) {
-		super(TRBlockSettings.storageBlock(isHot, hardness, resistance));
+	public BlockStorage(String name, boolean isHot, float hardness, float resistance) {
+		super(TRBlockSettings.storageBlock(name, isHot, hardness, resistance));
 	}
 }

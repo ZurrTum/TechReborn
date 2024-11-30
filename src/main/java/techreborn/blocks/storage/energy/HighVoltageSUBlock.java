@@ -35,8 +35,8 @@ import techreborn.blockentity.storage.energy.HighVoltageSUBlockEntity;
  */
 public class HighVoltageSUBlock extends EnergyStorageBlock {
 
-	public HighVoltageSUBlock() {
-		super("high_voltage_su", GuiType.HIGH_VOLTAGE_SU);
+	public HighVoltageSUBlock(String name) {
+		super(name, "high_voltage_su", GuiType.HIGH_VOLTAGE_SU);
 	}
 
 	@Override

@@ -58,8 +58,8 @@ public abstract class EnergyStorageBlock extends BaseBlockEntityProvider {
 	public final String name;
 	public final IMachineGuiHandler gui;
 
-	public EnergyStorageBlock(String name, IMachineGuiHandler gui) {
-		super(TRBlockSettings.energyStorage());
+	public EnergyStorageBlock(String keyName, String name, IMachineGuiHandler gui) {
+		super(TRBlockSettings.energyStorage(keyName));
 		this.setDefaultState(this.getStateManager().getDefaultState().with(FACING, Direction.NORTH));
 		this.name = name;
 		this.gui = gui;

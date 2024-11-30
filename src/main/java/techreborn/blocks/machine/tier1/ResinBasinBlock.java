@@ -62,8 +62,8 @@ public class ResinBasinBlock extends BaseBlockEntityProvider {
 	protected static final VoxelShape SHAPE = Block.createCuboidShape(0d,0d, 0d, 16d, 8d, 16d);
 	final BiFunction<BlockPos, BlockState, BlockEntity> blockEntityClass;
 
-	public ResinBasinBlock(BiFunction<BlockPos, BlockState, BlockEntity> blockEntityClass) {
-		super(TRBlockSettings.resinBasin());
+	public ResinBasinBlock(String name, BiFunction<BlockPos, BlockState, BlockEntity> blockEntityClass) {
+		super(TRBlockSettings.resinBasin(name));
 		this.blockEntityClass = blockEntityClass;
 
 		this.setDefaultState(

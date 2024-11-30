@@ -51,8 +51,8 @@ import techreborn.init.TRBlockSettings;
 public class BlockNuke extends BaseBlock {
 	public static final BooleanProperty OVERLAY = BooleanProperty.of("overlay");
 
-	public BlockNuke() {
-		super(TRBlockSettings.nuke());
+	public BlockNuke(String name) {
+		super(TRBlockSettings.nuke(name));
 		this.setDefaultState(this.getStateManager().getDefaultState().with(OVERLAY, false));
 	}
 

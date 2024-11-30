@@ -43,8 +43,8 @@ public class BlockSolarPanel extends BlockMachineBase {
 
 	public final SolarPanels panelType;
 
-	public BlockSolarPanel(SolarPanels panel) {
-		super(TRBlockSettings.solarPanel());
+	public BlockSolarPanel(String name, SolarPanels panel) {
+		super(TRBlockSettings.solarPanel(name));
 		this.panelType = panel;
 	}
 

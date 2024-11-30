@@ -30,6 +30,8 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import reborncore.common.fluid.*;
 import techreborn.TechReborn;
@@ -81,12 +83,13 @@ public enum ModFluids implements ItemConvertible {
 	private final Identifier identifier;
 
 	ModFluids() {
-		this.identifier = Identifier.of(TechReborn.MOD_ID, this.toString().toLowerCase(Locale.ROOT));
+		String name = this.toString().toLowerCase(Locale.ROOT);
+		this.identifier = Identifier.of(TechReborn.MOD_ID, name);
 
 		FluidSettings fluidSettings = FluidSettings.create();
 
-		Identifier texture_still = Identifier.of(TechReborn.MOD_ID, "block/fluids/" + this.toString().toLowerCase(Locale.ROOT) + "_still");
-		Identifier texture_flowing = Identifier.of(TechReborn.MOD_ID, "block/fluids/" + this.toString().toLowerCase(Locale.ROOT) + "_flowing");
+		Identifier texture_still = Identifier.of(TechReborn.MOD_ID, "block/fluids/" + name + "_still");
+		Identifier texture_flowing = Identifier.of(TechReborn.MOD_ID, "block/fluids/" + name + "_flowing");
 
 		fluidSettings.setStillTexture(texture_still);
 		fluidSettings.setFlowingTexture(texture_flowing);
@@ -96,8 +99,8 @@ public enum ModFluids implements ItemConvertible {
 		flowingFluid = new RebornFluid(false, fluidSettings, () -> block, () -> bucket, () -> flowingFluid, () -> stillFluid) {
 		};
 
-		block = new RebornFluidBlock(stillFluid, TRBlockSettings.fluid());
 		bucket = new RebornBucketItem(stillFluid, new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1));
+		block = new RebornFluidBlock(stillFluid, TRBlockSettings.fluid(name));
 	}
 
 	public void register() {
