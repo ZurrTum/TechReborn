@@ -34,28 +34,17 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import techreborn.TechReborn;
 import techreborn.init.TRContent;
 
-import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class TRRecipeHandler {
 
-
 	public static void unlockTRRecipes(ServerPlayerEntity playerMP) {
 		MinecraftServer server = playerMP.getServer();
 		if (server == null) return;
 		ServerRecipeManager recipeManager = server.getRecipeManager();
-		PreparedRecipes preparedRecipes;
-
-		// preparedRecipes is private, so we need to use reflection
-		try {
-			Field field = recipeManager.getClass().getDeclaredField("preparedRecipes");
-			field.setAccessible(true);
-			preparedRecipes = (PreparedRecipes) field.get(recipeManager);
-		} catch (NoSuchFieldException | IllegalAccessException e) {
-			return;
-		}
+		PreparedRecipes preparedRecipes = recipeManager.preparedRecipes;
 
 		Collection<RecipeEntry<?>> recipeList = preparedRecipes.getAll(RecipeType.CRAFTING).stream()
 			.filter(TRRecipeHandler::isRecipeValid)
