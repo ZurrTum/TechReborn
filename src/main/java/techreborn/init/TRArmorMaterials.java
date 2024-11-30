@@ -26,10 +26,7 @@ package techreborn.init;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.equipment.ArmorMaterial;
-import net.minecraft.item.equipment.EquipmentAsset;
-import net.minecraft.item.equipment.EquipmentAssetKeys;
 import net.minecraft.item.equipment.EquipmentType;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.TagKey;
@@ -132,7 +129,7 @@ public class TRArmorMaterials {
 	}), 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0f, 0.0f, 33, EMPTY);
 
 	private static ArmorMaterial register(String id, EnumMap<EquipmentType, Integer> defense, int enchantability, RegistryEntry<SoundEvent> equipSound, float toughness, float knockbackResistance, int durability, TagKey<Item> repairIngredient) {
-		RegistryKey<EquipmentAsset> asset = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of("techreborn",  id));
-		return new ArmorMaterial(durability, defense, enchantability, equipSound, toughness, knockbackResistance, repairIngredient, asset);
+		Identifier key = Identifier.of("techreborn",  id);
+		return new ArmorMaterial(durability, defense, enchantability, equipSound, toughness, knockbackResistance, repairIngredient, key);
 	}
 }
