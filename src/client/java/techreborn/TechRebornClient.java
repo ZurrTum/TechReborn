@@ -79,6 +79,7 @@ import techreborn.items.armor.BatpackItem;
 import techreborn.items.tool.ChainsawItem;
 import techreborn.items.tool.industrial.NanosaberItem;
 
+import java.io.StringReader;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -111,7 +112,7 @@ public class TechRebornClient implements ClientModInitializer {
 
 				if (path.equals("cell")) {
 					if (!RendererAccess.INSTANCE.hasRenderer()) {
-						return JsonUnbakedModel.deserialize("{\"parent\":\"minecraft:item/generated\",\"textures\":{\"layer0\":\"techreborn:item/cell_background\"}}");
+						return JsonUnbakedModel.deserialize(new StringReader("{\"parent\":\"minecraft:item/generated\",\"textures\":{\"layer0\":\"techreborn:item/cell_background\"}}"));
 					}
 
 					return new UnbakedDynamicModel(DynamicCellBakedModel::new);
@@ -120,7 +121,7 @@ public class TechRebornClient implements ClientModInitializer {
 				Fluid fluid = Registries.FLUID.get(Identifier.of(TechReborn.MOD_ID, path.split("_bucket")[0]));
 				if (path.endsWith("_bucket") && fluid != Fluids.EMPTY) {
 					if (!RendererAccess.INSTANCE.hasRenderer()) {
-						return JsonUnbakedModel.deserialize("{\"parent\":\"minecraft:item/generated\",\"textures\":{\"layer0\":\"minecraft:item/bucket\"}}");
+						return JsonUnbakedModel.deserialize(new StringReader("{\"parent\":\"minecraft:item/generated\",\"textures\":{\"layer0\":\"minecraft:item/bucket\"}}"));
 					}
 
 					return new UnbakedDynamicModel(DynamicBucketBakedModel::new);
