@@ -269,13 +269,7 @@ public class TechRebornClient implements ClientModInitializer {
 
 	private record UnbakedDynamicModel(Supplier<BaseDynamicFluidBakedModel> supplier) implements UnbakedModel {
 		@Override
-		public Collection<Identifier> getModelDependencies() {
-			return Collections.emptyList();
-		}
-
-		@Override
-		public void setParents(Function<Identifier, UnbakedModel> modelLoader) {
-
+		public void resolve(Resolver resolver) {
 		}
 
 		@Nullable
