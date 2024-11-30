@@ -148,9 +148,9 @@ public class SlotConfiguration implements NBTSerializable {
 		public static final PacketCodec<ByteBuf, SlotConfigHolder> PACKET_CODEC = PacketCodec.tuple(
 			PacketCodecs.INTEGER, SlotConfigHolder::getSlotID,
 			PacketCodecs.map(HashMap::new, Direction.PACKET_CODEC, SlotConfig.PACKET_CODEC), SlotConfigHolder::getSideMap,
-			PacketCodecs.BOOLEAN, SlotConfigHolder::autoInput,
-			PacketCodecs.BOOLEAN, SlotConfigHolder::autoOutput,
-			PacketCodecs.BOOLEAN, SlotConfigHolder::filter,
+			PacketCodecs.BOOL, SlotConfigHolder::autoInput,
+			PacketCodecs.BOOL, SlotConfigHolder::autoOutput,
+			PacketCodecs.BOOL, SlotConfigHolder::filter,
 			SlotConfigHolder::new
 		);
 
