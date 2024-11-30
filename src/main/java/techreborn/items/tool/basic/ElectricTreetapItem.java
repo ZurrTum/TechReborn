@@ -26,9 +26,13 @@ package techreborn.items.tool.basic;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.Identifier;
 import reborncore.common.powerSystem.RcEnergyItem;
 import reborncore.common.powerSystem.RcEnergyTier;
 import reborncore.common.util.ItemUtils;
+import techreborn.TechReborn;
 import techreborn.config.TechRebornConfig;
 
 /**
@@ -37,8 +41,8 @@ import techreborn.config.TechRebornConfig;
 public class ElectricTreetapItem extends Item implements RcEnergyItem {
 	public final RcEnergyTier tier = RcEnergyTier.MEDIUM;
 
-	public ElectricTreetapItem() {
-		super(new Item.Settings().maxDamage(0));
+	public ElectricTreetapItem(String name) {
+		super(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))).maxDamage(0));
 	}
 
 	// Item

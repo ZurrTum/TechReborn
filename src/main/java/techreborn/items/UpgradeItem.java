@@ -26,11 +26,15 @@ package techreborn.items;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import reborncore.api.blockentity.IUpgrade;
 import reborncore.common.blockentity.MachineBaseBlockEntity;
 import reborncore.common.recipes.IUpgradeHandler;
+import techreborn.TechReborn;
 
 public class UpgradeItem extends Item implements IUpgrade {
 
@@ -38,7 +42,7 @@ public class UpgradeItem extends Item implements IUpgrade {
 	public final IUpgrade behavior;
 
 	public UpgradeItem(String name, IUpgrade process) {
-		super(new Item.Settings().maxCount(16));
+		super(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))).maxCount(16));
 		this.name = name;
 		this.behavior = process;
 	}

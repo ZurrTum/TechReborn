@@ -99,8 +99,10 @@ public enum ModFluids implements ItemConvertible {
 		flowingFluid = new RebornFluid(false, fluidSettings, () -> block, () -> bucket, () -> flowingFluid, () -> stillFluid) {
 		};
 
-		bucket = new RebornBucketItem(stillFluid, new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1));
 		block = new RebornFluidBlock(stillFluid, TRBlockSettings.fluid(name));
+		Item.Settings settings = new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name + "_bucket")))
+			.recipeRemainder(Items.BUCKET).maxCount(1);
+		bucket = new RebornBucketItem(stillFluid, settings);
 	}
 
 	public void register() {

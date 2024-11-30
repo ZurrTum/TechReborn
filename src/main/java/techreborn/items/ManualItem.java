@@ -26,18 +26,21 @@ package techreborn.items;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import reborncore.common.network.NetworkManager;
+import techreborn.TechReborn;
 import techreborn.packets.clientbound.OpenManualPayload;
 
 public class ManualItem extends Item {
 
-	public ManualItem() {
-		super(new Item.Settings().maxCount(1));
+	public ManualItem(String name) {
+		super(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))).maxCount(1));
 	}
 
 	@Override

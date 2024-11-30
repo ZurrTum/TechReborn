@@ -30,6 +30,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
@@ -40,6 +41,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.GlobalPos;
 import net.minecraft.world.World;
 import reborncore.common.chunkloading.ChunkLoaderManager;
+import techreborn.TechReborn;
 import techreborn.component.TRDataComponentTypes;
 
 import java.util.List;
@@ -47,8 +49,8 @@ import java.util.Optional;
 
 public class FrequencyTransmitterItem extends Item {
 
-	public FrequencyTransmitterItem() {
-		super(new Item.Settings().maxCount(1));
+	public FrequencyTransmitterItem(String name) {
+		super(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))).maxCount(1));
 	}
 
 	@Override

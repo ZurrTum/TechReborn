@@ -53,8 +53,8 @@ public class IndustrialChainsawItem extends ChainsawItem {
 
 	private BlockState lastCheckedBlockState;
 
-	public IndustrialChainsawItem() {
-		super(TRToolMaterials.INDUSTRIAL_CHAINSAW, TechRebornConfig.industrialChainsawCharge, RcEnergyTier.INSANE, TechRebornConfig.industrialChainsawCost, 20F);
+	public IndustrialChainsawItem(String name) {
+		super(name, TRToolMaterials.INDUSTRIAL_CHAINSAW, TechRebornConfig.industrialChainsawCharge, RcEnergyTier.INSANE, TechRebornConfig.industrialChainsawCost, 20F);
 	}
 
 	private boolean isValidLog(BlockState state) {

@@ -54,8 +54,8 @@ import java.util.stream.Collectors;
 
 public class IndustrialJackhammerItem extends JackhammerItem implements MultiBlockBreakingTool {
 
-	public IndustrialJackhammerItem() {
-		super(TRToolMaterials.INDUSTRIAL_JACKHAMMER, TechRebornConfig.industrialJackhammerCharge, RcEnergyTier.INSANE, TechRebornConfig.industrialJackhammerCost);
+	public IndustrialJackhammerItem(String name) {
+		super(name, TRToolMaterials.INDUSTRIAL_JACKHAMMER, TechRebornConfig.industrialJackhammerCharge, RcEnergyTier.INSANE, TechRebornConfig.industrialJackhammerCost);
 	}
 
 	// Cycle Inactive, Active 3*3 and Active 5*5

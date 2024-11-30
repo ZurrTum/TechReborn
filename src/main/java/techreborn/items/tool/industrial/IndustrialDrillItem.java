@@ -45,8 +45,8 @@ import java.util.List;
 
 public class IndustrialDrillItem extends DrillItem {
 
-	public IndustrialDrillItem() {
-		super(TRToolMaterials.INDUSTRIAL_DRILL, TechRebornConfig.industrialDrillCharge, RcEnergyTier.INSANE, TechRebornConfig.industrialDrillCost, 20.0F);
+	public IndustrialDrillItem(String name) {
+		super(name, TRToolMaterials.INDUSTRIAL_DRILL, TechRebornConfig.industrialDrillCharge, RcEnergyTier.INSANE, TechRebornConfig.industrialDrillCost, 20.0F);
 	}
 
 	private boolean shouldBreak(PlayerEntity playerIn, World worldIn, BlockPos originalPos, BlockPos pos) {

@@ -29,13 +29,17 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import reborncore.common.powerSystem.RcEnergyItem;
 import reborncore.common.powerSystem.RcEnergyTier;
 import reborncore.common.util.ItemUtils;
+import techreborn.TechReborn;
 import techreborn.utils.TRItemUtils;
 
 import java.util.List;
@@ -45,8 +49,8 @@ public class BatteryItem extends Item implements RcEnergyItem {
 	private final int maxEnergy;
 	private final RcEnergyTier tier;
 
-	public BatteryItem(int maxEnergy, RcEnergyTier tier) {
-		super(new Item.Settings().maxCount(1));
+	public BatteryItem(String name, int maxEnergy, RcEnergyTier tier) {
+		super(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))).maxCount(1));
 		this.maxEnergy = maxEnergy;
 		this.tier = tier;
 	}

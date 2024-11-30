@@ -332,9 +332,9 @@ public class TRContent {
 				InitUtils.setup(block, name + "_storage_unit");
 			if (upgradable) {
 				if (name.equals("buffer"))
-					upgrader = InitUtils.setup(new UpgraderItem(), "storage_buffer_upgrader");
+					upgrader = InitUtils.setup(new UpgraderItem("storage_buffer_upgrader"), "storage_buffer_upgrader");
 				else
-					upgrader = InitUtils.setup(new UpgraderItem(), name + "_unit_upgrader");
+					upgrader = InitUtils.setup(new UpgraderItem(name + "_unit_upgrader"), name + "_unit_upgrader");
 			}
 			else
 				upgrader = null;
@@ -808,7 +808,7 @@ public class TRContent {
 
 		Dusts(String tagNameBase) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(new Item.Settings());
+			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name + "_dust"))));
 			InitUtils.setup(item, name + "_dust");
 			tag = TagKey.of(RegistryKeys.ITEM, Identifier.of("c", "dusts/" + Objects.requireNonNullElse(tagNameBase, name)));
 		}
@@ -847,7 +847,7 @@ public class TRContent {
 
 		RawMetals() {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(new Item.Settings());
+			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))));
 			Ores oreVariant = null;
 			try {
 				oreVariant = Ores.valueOf(this.toString());
@@ -928,7 +928,7 @@ public class TRContent {
 
 		SmallDusts(String tagNameBase, ItemConvertible dustVariant) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(new Item.Settings());
+			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))));
 			if (dustVariant == null)
 				try {
 					dustVariant = Dusts.valueOf(this.toString());
@@ -1004,7 +1004,7 @@ public class TRContent {
 
 		Gems() {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(new Item.Settings());
+			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))));
 			Dusts dustVariant = null;
 			try {
 				dustVariant = Dusts.valueOf(this.toString());
@@ -1103,7 +1103,7 @@ public class TRContent {
 
 		Ingots(String tagNameBase) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(new Item.Settings());
+			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name + "_ingot"))));
 			Dusts dustVariant = null;
 			try {
 				dustVariant = Dusts.valueOf(this.toString());
@@ -1202,7 +1202,7 @@ public class TRContent {
 
 		Nuggets(String tagNameBase, ItemConvertible ingotVariant, boolean ofGem) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(new Item.Settings());
+			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))));
 			if (ingotVariant == null)
 				try {
 					ingotVariant = Ingots.valueOf(this.toString());
@@ -1328,7 +1328,7 @@ public class TRContent {
 
 		Parts() {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(new Item.Settings());
+			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))));
 			InitUtils.setup(item, name);
 		}
 
@@ -1397,7 +1397,7 @@ public class TRContent {
 
 		Plates(ItemConvertible source, ItemConvertible sourceBlock, boolean industrial, String tagNameBase) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(new Item.Settings());
+			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))));
 			ItemConvertible sourceVariant = null;
 			if (source != null) {
 				sourceVariant = source;

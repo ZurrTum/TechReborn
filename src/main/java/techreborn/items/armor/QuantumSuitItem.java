@@ -59,8 +59,8 @@ public class QuantumSuitItem extends TREnergyArmourItem implements ArmorBlockEnt
 	private static final EntityAttributeModifier DISABLED_KNOCKBACK_RESISTANCE_MODIFIER = new EntityAttributeModifier(Identifier.of("techreborn", "quantum_knockback_resistance"), 0, EntityAttributeModifier.Operation.ADD_VALUE);
 	private static final EntityAttributeModifier DISABLED_MOVEMENT_SPEED_MODIFIER = new EntityAttributeModifier(Identifier.of("techreborn", "quantum_movement_speed"), 0, EntityAttributeModifier.Operation.ADD_VALUE);
 
-	public QuantumSuitItem(ArmorMaterial material, EquipmentType slot) {
-		super(material, slot, TechRebornConfig.quantumSuitCapacity, RcEnergyTier.INSANE);
+	public QuantumSuitItem(String name, ArmorMaterial material, EquipmentType slot) {
+		super(name, material, slot, TechRebornConfig.quantumSuitCapacity, RcEnergyTier.INSANE);
 	}
 
 	// TREnergyArmourItem

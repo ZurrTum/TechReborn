@@ -32,17 +32,21 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.item.equipment.EquipmentType;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 import reborncore.common.powerSystem.RcEnergyItem;
 import reborncore.common.powerSystem.RcEnergyTier;
 import reborncore.common.util.ItemUtils;
+import techreborn.TechReborn;
 
 public abstract class TREnergyArmourItem extends ArmorItem implements RcEnergyItem {
 	public final long maxCharge;
 	private final RcEnergyTier energyTier;
 
-	public TREnergyArmourItem(ArmorMaterial material, EquipmentType slot, long maxCharge, RcEnergyTier energyTier) {
-		super(material, slot, new Item.Settings().maxCount(1));
+	public TREnergyArmourItem(String name, ArmorMaterial material, EquipmentType slot, long maxCharge, RcEnergyTier energyTier) {
+		super(material, slot, new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))).maxCount(1));
 		this.maxCharge = maxCharge;
 		this.energyTier = energyTier;
 	}

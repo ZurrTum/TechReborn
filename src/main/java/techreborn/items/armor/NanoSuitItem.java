@@ -56,8 +56,8 @@ public class NanoSuitItem extends TREnergyArmourItem implements ArmorBlockEntity
 	private static final EntityAttributeModifier POWERED_ATTRIBUTE_MODIFIER = new EntityAttributeModifier(Identifier.of(TechReborn.MOD_ID, "nano_suit_armor"), 14, EntityAttributeModifier.Operation.ADD_VALUE);
 	private static final EntityAttributeModifier DEPLETED_ATTRIBUTE_MODIFIER = new EntityAttributeModifier(Identifier.of(TechReborn.MOD_ID, "nano_suit_armor"), 0, EntityAttributeModifier.Operation.ADD_VALUE);
 
-	public NanoSuitItem(ArmorMaterial material, EquipmentType slot) {
-		super(material, slot, TechRebornConfig.nanoSuitCapacity, RcEnergyTier.HIGH);
+	public NanoSuitItem(String name, ArmorMaterial material, EquipmentType slot) {
+		super(name, material, slot, TechRebornConfig.nanoSuitCapacity, RcEnergyTier.HIGH);
 	}
 
 	// TREnergyArmourItem

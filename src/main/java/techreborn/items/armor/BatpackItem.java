@@ -36,8 +36,8 @@ import reborncore.common.util.ItemUtils;
 
 public class BatpackItem extends TREnergyArmourItem implements RcEnergyItem {
 
-	public BatpackItem(long maxCharge, ArmorMaterial material, RcEnergyTier tier) {
-		super(material, EquipmentType.CHESTPLATE, maxCharge, tier);
+	public BatpackItem(String name, long maxCharge, ArmorMaterial material, RcEnergyTier tier) {
+		super(name, material, EquipmentType.CHESTPLATE, maxCharge, tier);
 	}
 
 	// Item

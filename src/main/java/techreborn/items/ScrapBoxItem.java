@@ -27,20 +27,24 @@ package techreborn.items;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import reborncore.common.crafting.RebornRecipe;
 import reborncore.common.crafting.RecipeUtils;
 import reborncore.common.util.WorldUtils;
+import techreborn.TechReborn;
 import techreborn.init.ModRecipes;
 
 import java.util.List;
 
 public class ScrapBoxItem extends Item {
 
-	public ScrapBoxItem() {
-		super(new Item.Settings());
+	public ScrapBoxItem(String name) {
+		super(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))));
 	}
 
 	@Override

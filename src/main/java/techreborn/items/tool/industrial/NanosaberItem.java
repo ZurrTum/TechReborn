@@ -36,6 +36,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -44,6 +46,7 @@ import net.minecraft.world.World;
 import reborncore.common.powerSystem.RcEnergyItem;
 import reborncore.common.powerSystem.RcEnergyTier;
 import reborncore.common.util.ItemUtils;
+import techreborn.TechReborn;
 import techreborn.component.TRDataComponentTypes;
 import techreborn.config.TechRebornConfig;
 import techreborn.init.TRToolMaterials;
@@ -58,8 +61,13 @@ public class NanosaberItem extends SwordItem implements RcEnergyItem {
 	private static final EntityAttributeModifier DISABLED_ATTACK_SPEED_MODIFIER = new EntityAttributeModifier(Identifier.of("techreborn", "nano_saber_attack_speed"), 0, EntityAttributeModifier.Operation.ADD_VALUE);
 
 	// 1ME max charge with 2k charge rate
-	public NanosaberItem() {
-		super(TRToolMaterials.NANOSABER, 1f, 1f, new Item.Settings().maxDamage(0));
+	public NanosaberItem(String name) {
+		super(
+			TRToolMaterials.NANOSABER,
+			1f,
+			1f,
+			new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))).maxDamage(0)
+		);
 	}
 
 	// SwordItem

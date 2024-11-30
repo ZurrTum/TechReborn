@@ -28,18 +28,22 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import reborncore.api.IToolHandler;
+import techreborn.TechReborn;
 
 /**
  * Created by modmuss50 on 26/02/2016.
  */
 public class WrenchItem extends Item implements IToolHandler {
 
-	public WrenchItem() {
-		super(new Item.Settings().maxCount(1));
+	public WrenchItem(String name) {
+		super(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))).maxCount(1));
 	}
 
 	@Override

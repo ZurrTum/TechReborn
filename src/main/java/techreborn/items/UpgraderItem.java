@@ -30,10 +30,14 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import reborncore.common.blockentity.MachineBaseBlockEntity;
+import techreborn.TechReborn;
 import techreborn.blockentity.storage.fluid.TankUnitBaseBlockEntity;
 import techreborn.blockentity.storage.item.StorageUnitBaseBlockEntity;
 import techreborn.init.TRContent.StorageUnit;
@@ -41,8 +45,8 @@ import techreborn.init.TRContent.TankUnit;
 
 public class UpgraderItem extends Item {
 
-	public UpgraderItem() {
-		super(new Item.Settings());
+	public UpgraderItem(String name) {
+		super(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))));
 	}
 
 	@Override

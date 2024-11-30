@@ -30,12 +30,16 @@ import net.minecraft.item.AxeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import reborncore.common.powerSystem.RcEnergyItem;
 import reborncore.common.powerSystem.RcEnergyTier;
 import reborncore.common.util.ItemUtils;
+import techreborn.TechReborn;
 
 public class ChainsawItem extends AxeItem implements RcEnergyItem {
 
@@ -46,8 +50,13 @@ public class ChainsawItem extends AxeItem implements RcEnergyItem {
 	protected final float unpoweredSpeed = 0.5f;
 
 
-	public ChainsawItem(ToolMaterial material, int energyCapacity, RcEnergyTier tier, int cost, float poweredSpeed) {
-		super(material, 3f, -2.9f, new Item.Settings().maxDamage(0));
+	public ChainsawItem(String name, ToolMaterial material, int energyCapacity, RcEnergyTier tier, int cost, float poweredSpeed) {
+		super(
+			material,
+			3f,
+			-2.9f,
+			new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))).maxDamage(0)
+		);
 		this.maxCharge = energyCapacity;
 		this.tier = tier;
 		this.cost = cost;

@@ -119,6 +119,10 @@ public class ModRegistry {
 		TechReborn.LOGGER.debug("TechReborn's Blocks Loaded");
 	}
 
+	private static Item.Settings getItemSettings(String name) {
+		return new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name)));
+	}
+
 	private static void registerItems() {
 		Arrays.stream(Ingots.values()).forEach(value -> RebornRegistry.registerItem(value.asItem()));
 		Arrays.stream(Nuggets.values()).forEach(value -> RebornRegistry.registerItem(value.asItem()));
@@ -130,112 +134,112 @@ public class ModRegistry {
 		Arrays.stream(Parts.values()).forEach(value -> RebornRegistry.registerItem(value.asItem()));
 		Arrays.stream(Upgrades.values()).forEach(value -> RebornRegistry.registerItem(value.asItem()));
 
-		RebornRegistry.registerItem(TRContent.QUANTUM_HELMET = InitUtils.setup(new QuantumSuitItem(TRArmorMaterials.QUANTUM, EquipmentType.HELMET), "quantum_helmet"));
-		RebornRegistry.registerItem(TRContent.QUANTUM_CHESTPLATE = InitUtils.setup(new QuantumSuitItem(TRArmorMaterials.QUANTUM, EquipmentType.CHESTPLATE), "quantum_chestplate"));
-		RebornRegistry.registerItem(TRContent.QUANTUM_LEGGINGS = InitUtils.setup(new QuantumSuitItem(TRArmorMaterials.QUANTUM, EquipmentType.LEGGINGS), "quantum_leggings"));
-		RebornRegistry.registerItem(TRContent.QUANTUM_BOOTS = InitUtils.setup(new QuantumSuitItem(TRArmorMaterials.QUANTUM, EquipmentType.BOOTS), "quantum_boots"));
+		RebornRegistry.registerItem(TRContent.QUANTUM_HELMET = InitUtils.setup(new QuantumSuitItem("quantum_helmet", TRArmorMaterials.QUANTUM, EquipmentType.HELMET), "quantum_helmet"));
+		RebornRegistry.registerItem(TRContent.QUANTUM_CHESTPLATE = InitUtils.setup(new QuantumSuitItem("quantum_chestplate", TRArmorMaterials.QUANTUM, EquipmentType.CHESTPLATE), "quantum_chestplate"));
+		RebornRegistry.registerItem(TRContent.QUANTUM_LEGGINGS = InitUtils.setup(new QuantumSuitItem("quantum_leggings", TRArmorMaterials.QUANTUM, EquipmentType.LEGGINGS), "quantum_leggings"));
+		RebornRegistry.registerItem(TRContent.QUANTUM_BOOTS = InitUtils.setup(new QuantumSuitItem("quantum_boots", TRArmorMaterials.QUANTUM, EquipmentType.BOOTS), "quantum_boots"));
 
-		RebornRegistry.registerItem(TRContent.NANO_HELMET = InitUtils.setup(new NanoSuitItem(TRArmorMaterials.NANO, EquipmentType.HELMET), "nano_helmet"));
-		RebornRegistry.registerItem(TRContent.NANO_CHESTPLATE = InitUtils.setup(new NanoSuitItem(TRArmorMaterials.NANO, EquipmentType.CHESTPLATE), "nano_chestplate"));
-		RebornRegistry.registerItem(TRContent.NANO_LEGGINGS = InitUtils.setup(new NanoSuitItem(TRArmorMaterials.NANO, EquipmentType.LEGGINGS), "nano_leggings"));
-		RebornRegistry.registerItem(TRContent.NANO_BOOTS = InitUtils.setup(new NanoSuitItem(TRArmorMaterials.NANO, EquipmentType.BOOTS), "nano_boots"));
+		RebornRegistry.registerItem(TRContent.NANO_HELMET = InitUtils.setup(new NanoSuitItem("nano_helmet", TRArmorMaterials.NANO, EquipmentType.HELMET), "nano_helmet"));
+		RebornRegistry.registerItem(TRContent.NANO_CHESTPLATE = InitUtils.setup(new NanoSuitItem("nano_chestplate", TRArmorMaterials.NANO, EquipmentType.CHESTPLATE), "nano_chestplate"));
+		RebornRegistry.registerItem(TRContent.NANO_LEGGINGS = InitUtils.setup(new NanoSuitItem("nano_leggings", TRArmorMaterials.NANO, EquipmentType.LEGGINGS), "nano_leggings"));
+		RebornRegistry.registerItem(TRContent.NANO_BOOTS = InitUtils.setup(new NanoSuitItem("nano_boots", TRArmorMaterials.NANO, EquipmentType.BOOTS), "nano_boots"));
 
 		// Gem armor & tools
 		// Todo: repair with tags
-		RebornRegistry.registerItem(TRContent.BRONZE_SWORD = InitUtils.setup(new SwordItem(TRToolTier.BRONZE, 0f, -2f, new Item.Settings()), "bronze_sword"));
-		RebornRegistry.registerItem(TRContent.BRONZE_PICKAXE = InitUtils.setup(new PickaxeItem(TRToolTier.BRONZE, -2f, -2.8f, new Item.Settings()), "bronze_pickaxe"));
-		RebornRegistry.registerItem(TRContent.BRONZE_SPADE = InitUtils.setup(new ShovelItem(TRToolTier.BRONZE, -2f, -3f, new Item.Settings()), "bronze_spade"));
-		RebornRegistry.registerItem(TRContent.BRONZE_AXE = InitUtils.setup(new AxeItem(TRToolTier.BRONZE, 3f, -2.9f, new Item.Settings()), "bronze_axe"));
-		RebornRegistry.registerItem(TRContent.BRONZE_HOE = InitUtils.setup(new HoeItem(TRToolTier.BRONZE, -4f, 0f, new Item.Settings()), "bronze_hoe"));
+		RebornRegistry.registerItem(TRContent.BRONZE_SWORD = InitUtils.setup(new SwordItem(TRToolTier.BRONZE, 0f, -2f, getItemSettings("bronze_sword")), "bronze_sword"));
+		RebornRegistry.registerItem(TRContent.BRONZE_PICKAXE = InitUtils.setup(new PickaxeItem(TRToolTier.BRONZE, -2f, -2.8f, getItemSettings("bronze_pickaxe")), "bronze_pickaxe"));
+		RebornRegistry.registerItem(TRContent.BRONZE_SPADE = InitUtils.setup(new ShovelItem(TRToolTier.BRONZE, -2f, -3f, getItemSettings("bronze_spade")), "bronze_spade"));
+		RebornRegistry.registerItem(TRContent.BRONZE_AXE = InitUtils.setup(new AxeItem(TRToolTier.BRONZE, 3f, -2.9f, getItemSettings("bronze_axe")), "bronze_axe"));
+		RebornRegistry.registerItem(TRContent.BRONZE_HOE = InitUtils.setup(new HoeItem(TRToolTier.BRONZE, -4f, 0f, getItemSettings("bronze_hoe")), "bronze_hoe"));
 
-		RebornRegistry.registerItem(TRContent.BRONZE_HELMET = InitUtils.setup(new ArmorItem(TRArmorMaterials.BRONZE, EquipmentType.HELMET, new Item.Settings()), "bronze_helmet"));
-		RebornRegistry.registerItem(TRContent.BRONZE_CHESTPLATE = InitUtils.setup(new ArmorItem(TRArmorMaterials.BRONZE, EquipmentType.CHESTPLATE, new Item.Settings()), "bronze_chestplate"));
-		RebornRegistry.registerItem(TRContent.BRONZE_LEGGINGS = InitUtils.setup(new ArmorItem(TRArmorMaterials.BRONZE, EquipmentType.LEGGINGS, new Item.Settings()), "bronze_leggings"));
-		RebornRegistry.registerItem(TRContent.BRONZE_BOOTS = InitUtils.setup(new ArmorItem(TRArmorMaterials.BRONZE, EquipmentType.BOOTS, new Item.Settings()), "bronze_boots"));
+		RebornRegistry.registerItem(TRContent.BRONZE_HELMET = InitUtils.setup(new ArmorItem(TRArmorMaterials.BRONZE, EquipmentType.HELMET, getItemSettings("bronze_helmet")), "bronze_helmet"));
+		RebornRegistry.registerItem(TRContent.BRONZE_CHESTPLATE = InitUtils.setup(new ArmorItem(TRArmorMaterials.BRONZE, EquipmentType.CHESTPLATE, getItemSettings("bronze_chestplate")), "bronze_chestplate"));
+		RebornRegistry.registerItem(TRContent.BRONZE_LEGGINGS = InitUtils.setup(new ArmorItem(TRArmorMaterials.BRONZE, EquipmentType.LEGGINGS, getItemSettings("bronze_leggings")), "bronze_leggings"));
+		RebornRegistry.registerItem(TRContent.BRONZE_BOOTS = InitUtils.setup(new ArmorItem(TRArmorMaterials.BRONZE, EquipmentType.BOOTS, getItemSettings("bronze_boots")), "bronze_boots"));
 
-		RebornRegistry.registerItem(TRContent.RUBY_SWORD = InitUtils.setup(new SwordItem(TRToolTier.RUBY, 0f, -2f, new Item.Settings()), "ruby_sword"));
-		RebornRegistry.registerItem(TRContent.RUBY_PICKAXE = InitUtils.setup(new PickaxeItem(TRToolTier.RUBY, -2f, -2.8f, new Item.Settings()), "ruby_pickaxe"));
-		RebornRegistry.registerItem(TRContent.RUBY_SPADE = InitUtils.setup(new ShovelItem(TRToolTier.RUBY, -2f, -3f, new Item.Settings()), "ruby_spade"));
-		RebornRegistry.registerItem(TRContent.RUBY_AXE = InitUtils.setup(new AxeItem(TRToolTier.RUBY, 3f, -2.9f, new Item.Settings()), "ruby_axe"));
-		RebornRegistry.registerItem(TRContent.RUBY_HOE = InitUtils.setup(new HoeItem(TRToolTier.RUBY, -4f, 0f, new Item.Settings()), "ruby_hoe"));
+		RebornRegistry.registerItem(TRContent.RUBY_SWORD = InitUtils.setup(new SwordItem(TRToolTier.RUBY, 0f, -2f, getItemSettings("ruby_sword")), "ruby_sword"));
+		RebornRegistry.registerItem(TRContent.RUBY_PICKAXE = InitUtils.setup(new PickaxeItem(TRToolTier.RUBY, -2f, -2.8f, getItemSettings("ruby_pickaxe")), "ruby_pickaxe"));
+		RebornRegistry.registerItem(TRContent.RUBY_SPADE = InitUtils.setup(new ShovelItem(TRToolTier.RUBY, -2f, -3f, getItemSettings("ruby_spade")), "ruby_spade"));
+		RebornRegistry.registerItem(TRContent.RUBY_AXE = InitUtils.setup(new AxeItem(TRToolTier.RUBY, 3f, -2.9f, getItemSettings("ruby_axe")), "ruby_axe"));
+		RebornRegistry.registerItem(TRContent.RUBY_HOE = InitUtils.setup(new HoeItem(TRToolTier.RUBY, -4f, 0f, getItemSettings("ruby_hoe")), "ruby_hoe"));
 
-		RebornRegistry.registerItem(TRContent.RUBY_HELMET = InitUtils.setup(new ArmorItem(TRArmorMaterials.RUBY, EquipmentType.HELMET, new Item.Settings().maxCount(1)), "ruby_helmet"));
-		RebornRegistry.registerItem(TRContent.RUBY_CHESTPLATE = InitUtils.setup(new ArmorItem(TRArmorMaterials.RUBY, EquipmentType.CHESTPLATE, new Item.Settings().maxCount(1)), "ruby_chestplate"));
-		RebornRegistry.registerItem(TRContent.RUBY_LEGGINGS = InitUtils.setup(new ArmorItem(TRArmorMaterials.RUBY, EquipmentType.LEGGINGS, new Item.Settings().maxCount(1)), "ruby_leggings"));
-		RebornRegistry.registerItem(TRContent.RUBY_BOOTS = InitUtils.setup(new ArmorItem(TRArmorMaterials.RUBY, EquipmentType.BOOTS, new Item.Settings().maxCount(1)), "ruby_boots"));
+		RebornRegistry.registerItem(TRContent.RUBY_HELMET = InitUtils.setup(new ArmorItem(TRArmorMaterials.RUBY, EquipmentType.HELMET, getItemSettings("ruby_helmet").maxCount(1)), "ruby_helmet"));
+		RebornRegistry.registerItem(TRContent.RUBY_CHESTPLATE = InitUtils.setup(new ArmorItem(TRArmorMaterials.RUBY, EquipmentType.CHESTPLATE, getItemSettings("ruby_chestplate").maxCount(1)), "ruby_chestplate"));
+		RebornRegistry.registerItem(TRContent.RUBY_LEGGINGS = InitUtils.setup(new ArmorItem(TRArmorMaterials.RUBY, EquipmentType.LEGGINGS, getItemSettings("ruby_leggings").maxCount(1)), "ruby_leggings"));
+		RebornRegistry.registerItem(TRContent.RUBY_BOOTS = InitUtils.setup(new ArmorItem(TRArmorMaterials.RUBY, EquipmentType.BOOTS, getItemSettings("ruby_boots").maxCount(1)), "ruby_boots"));
 
-		RebornRegistry.registerItem(TRContent.SAPPHIRE_SWORD = InitUtils.setup(new SwordItem(TRToolTier.SAPPHIRE, 0f, -2f, new Item.Settings()), "sapphire_sword"));
-		RebornRegistry.registerItem(TRContent.SAPPHIRE_PICKAXE = InitUtils.setup(new PickaxeItem(TRToolTier.SAPPHIRE, -2f, -2.8f, new Item.Settings()), "sapphire_pickaxe"));
-		RebornRegistry.registerItem(TRContent.SAPPHIRE_SPADE = InitUtils.setup(new ShovelItem(TRToolTier.SAPPHIRE, -2f, -3f, new Item.Settings()), "sapphire_spade"));
-		RebornRegistry.registerItem(TRContent.SAPPHIRE_AXE = InitUtils.setup(new AxeItem(TRToolTier.SAPPHIRE, 3f, -2.9f, new Item.Settings()), "sapphire_axe"));
-		RebornRegistry.registerItem(TRContent.SAPPHIRE_HOE = InitUtils.setup(new HoeItem(TRToolTier.SAPPHIRE, -4f, 0f, new Item.Settings()), "sapphire_hoe"));
+		RebornRegistry.registerItem(TRContent.SAPPHIRE_SWORD = InitUtils.setup(new SwordItem(TRToolTier.SAPPHIRE, 0f, -2f, getItemSettings("sapphire_sword")), "sapphire_sword"));
+		RebornRegistry.registerItem(TRContent.SAPPHIRE_PICKAXE = InitUtils.setup(new PickaxeItem(TRToolTier.SAPPHIRE, -2f, -2.8f, getItemSettings("sapphire_pickaxe")), "sapphire_pickaxe"));
+		RebornRegistry.registerItem(TRContent.SAPPHIRE_SPADE = InitUtils.setup(new ShovelItem(TRToolTier.SAPPHIRE, -2f, -3f, getItemSettings("sapphire_spade")), "sapphire_spade"));
+		RebornRegistry.registerItem(TRContent.SAPPHIRE_AXE = InitUtils.setup(new AxeItem(TRToolTier.SAPPHIRE, 3f, -2.9f, getItemSettings("sapphire_axe")), "sapphire_axe"));
+		RebornRegistry.registerItem(TRContent.SAPPHIRE_HOE = InitUtils.setup(new HoeItem(TRToolTier.SAPPHIRE, -4f, 0f, getItemSettings("sapphire_hoe")), "sapphire_hoe"));
 
-		RebornRegistry.registerItem(TRContent.SAPPHIRE_HELMET = InitUtils.setup(new ArmorItem(TRArmorMaterials.SAPPHIRE, EquipmentType.HELMET, new Item.Settings().maxCount(1)), "sapphire_helmet"));
-		RebornRegistry.registerItem(TRContent.SAPPHIRE_CHESTPLATE = InitUtils.setup(new ArmorItem(TRArmorMaterials.SAPPHIRE, EquipmentType.CHESTPLATE, new Item.Settings().maxCount(1)), "sapphire_chestplate"));
-		RebornRegistry.registerItem(TRContent.SAPPHIRE_LEGGINGS = InitUtils.setup(new ArmorItem(TRArmorMaterials.SAPPHIRE, EquipmentType.LEGGINGS, new Item.Settings().maxCount(1)), "sapphire_leggings"));
-		RebornRegistry.registerItem(TRContent.SAPPHIRE_BOOTS = InitUtils.setup(new ArmorItem(TRArmorMaterials.SAPPHIRE, EquipmentType.BOOTS, new Item.Settings().maxCount(1)), "sapphire_boots"));
+		RebornRegistry.registerItem(TRContent.SAPPHIRE_HELMET = InitUtils.setup(new ArmorItem(TRArmorMaterials.SAPPHIRE, EquipmentType.HELMET, getItemSettings("sapphire_helmet").maxCount(1)), "sapphire_helmet"));
+		RebornRegistry.registerItem(TRContent.SAPPHIRE_CHESTPLATE = InitUtils.setup(new ArmorItem(TRArmorMaterials.SAPPHIRE, EquipmentType.CHESTPLATE, getItemSettings("sapphire_chestplate").maxCount(1)), "sapphire_chestplate"));
+		RebornRegistry.registerItem(TRContent.SAPPHIRE_LEGGINGS = InitUtils.setup(new ArmorItem(TRArmorMaterials.SAPPHIRE, EquipmentType.LEGGINGS, getItemSettings("sapphire_leggings").maxCount(1)), "sapphire_leggings"));
+		RebornRegistry.registerItem(TRContent.SAPPHIRE_BOOTS = InitUtils.setup(new ArmorItem(TRArmorMaterials.SAPPHIRE, EquipmentType.BOOTS, getItemSettings("sapphire_boots").maxCount(1)), "sapphire_boots"));
 
-		RebornRegistry.registerItem(TRContent.PERIDOT_SWORD = InitUtils.setup(new SwordItem(TRToolTier.PERIDOT, 0f, -2f, new Item.Settings()), "peridot_sword"));
-		RebornRegistry.registerItem(TRContent.PERIDOT_PICKAXE = InitUtils.setup(new PickaxeItem(TRToolTier.PERIDOT, -2f, -2.8f, new Item.Settings()), "peridot_pickaxe"));
-		RebornRegistry.registerItem(TRContent.PERIDOT_SPADE = InitUtils.setup(new ShovelItem(TRToolTier.PERIDOT, -2f, -3f, new Item.Settings()), "peridot_spade"));
-		RebornRegistry.registerItem(TRContent.PERIDOT_AXE = InitUtils.setup(new AxeItem(TRToolTier.PERIDOT, 3f, -2.9f, new Item.Settings()), "peridot_axe"));
-		RebornRegistry.registerItem(TRContent.PERIDOT_HOE = InitUtils.setup(new HoeItem(TRToolTier.PERIDOT, -4f, 0f, new Item.Settings()), "peridot_hoe"));
+		RebornRegistry.registerItem(TRContent.PERIDOT_SWORD = InitUtils.setup(new SwordItem(TRToolTier.PERIDOT, 0f, -2f, getItemSettings("peridot_sword")), "peridot_sword"));
+		RebornRegistry.registerItem(TRContent.PERIDOT_PICKAXE = InitUtils.setup(new PickaxeItem(TRToolTier.PERIDOT, -2f, -2.8f, getItemSettings("peridot_pickaxe")), "peridot_pickaxe"));
+		RebornRegistry.registerItem(TRContent.PERIDOT_SPADE = InitUtils.setup(new ShovelItem(TRToolTier.PERIDOT, -2f, -3f, getItemSettings("peridot_spade")), "peridot_spade"));
+		RebornRegistry.registerItem(TRContent.PERIDOT_AXE = InitUtils.setup(new AxeItem(TRToolTier.PERIDOT, 3f, -2.9f, getItemSettings("peridot_axe")), "peridot_axe"));
+		RebornRegistry.registerItem(TRContent.PERIDOT_HOE = InitUtils.setup(new HoeItem(TRToolTier.PERIDOT, -4f, 0f, getItemSettings("peridot_hoe")), "peridot_hoe"));
 
-		RebornRegistry.registerItem(TRContent.PERIDOT_HELMET = InitUtils.setup(new ArmorItem(TRArmorMaterials.PERIDOT, EquipmentType.HELMET, new Item.Settings().maxCount(1)), "peridot_helmet"));
-		RebornRegistry.registerItem(TRContent.PERIDOT_CHESTPLATE = InitUtils.setup(new ArmorItem(TRArmorMaterials.PERIDOT, EquipmentType.CHESTPLATE, new Item.Settings().maxCount(1)), "peridot_chestplate"));
-		RebornRegistry.registerItem(TRContent.PERIDOT_LEGGINGS = InitUtils.setup(new ArmorItem(TRArmorMaterials.PERIDOT, EquipmentType.LEGGINGS, new Item.Settings().maxCount(1)), "peridot_leggings"));
-		RebornRegistry.registerItem(TRContent.PERIDOT_BOOTS = InitUtils.setup(new ArmorItem(TRArmorMaterials.PERIDOT, EquipmentType.BOOTS, new Item.Settings().maxCount(1)), "peridot_boots"));
+		RebornRegistry.registerItem(TRContent.PERIDOT_HELMET = InitUtils.setup(new ArmorItem(TRArmorMaterials.PERIDOT, EquipmentType.HELMET, getItemSettings("peridot_helmet").maxCount(1)), "peridot_helmet"));
+		RebornRegistry.registerItem(TRContent.PERIDOT_CHESTPLATE = InitUtils.setup(new ArmorItem(TRArmorMaterials.PERIDOT, EquipmentType.CHESTPLATE, getItemSettings("peridot_chestplate").maxCount(1)), "peridot_chestplate"));
+		RebornRegistry.registerItem(TRContent.PERIDOT_LEGGINGS = InitUtils.setup(new ArmorItem(TRArmorMaterials.PERIDOT, EquipmentType.LEGGINGS, getItemSettings("peridot_leggings").maxCount(1)), "peridot_leggings"));
+		RebornRegistry.registerItem(TRContent.PERIDOT_BOOTS = InitUtils.setup(new ArmorItem(TRArmorMaterials.PERIDOT, EquipmentType.BOOTS, getItemSettings("peridot_boots").maxCount(1)), "peridot_boots"));
 
-		RebornRegistry.registerItem(TRContent.SILVER_HELMET = InitUtils.setup(new ArmorItem(TRArmorMaterials.SILVER, EquipmentType.HELMET, new Item.Settings().maxCount(1)), "silver_helmet"));
-		RebornRegistry.registerItem(TRContent.SILVER_CHESTPLATE = InitUtils.setup(new ArmorItem(TRArmorMaterials.SILVER, EquipmentType.CHESTPLATE, new Item.Settings().maxCount(1)), "silver_chestplate"));
-		RebornRegistry.registerItem(TRContent.SILVER_LEGGINGS = InitUtils.setup(new ArmorItem(TRArmorMaterials.SILVER, EquipmentType.LEGGINGS, new Item.Settings().maxCount(1)), "silver_leggings"));
-		RebornRegistry.registerItem(TRContent.SILVER_BOOTS = InitUtils.setup(new ArmorItem(TRArmorMaterials.SILVER, EquipmentType.BOOTS, new Item.Settings().maxCount(1)), "silver_boots"));
+		RebornRegistry.registerItem(TRContent.SILVER_HELMET = InitUtils.setup(new ArmorItem(TRArmorMaterials.SILVER, EquipmentType.HELMET, getItemSettings("silver_helmet").maxCount(1)), "silver_helmet"));
+		RebornRegistry.registerItem(TRContent.SILVER_CHESTPLATE = InitUtils.setup(new ArmorItem(TRArmorMaterials.SILVER, EquipmentType.CHESTPLATE, getItemSettings("silver_chestplate").maxCount(1)), "silver_chestplate"));
+		RebornRegistry.registerItem(TRContent.SILVER_LEGGINGS = InitUtils.setup(new ArmorItem(TRArmorMaterials.SILVER, EquipmentType.LEGGINGS, getItemSettings("silver_leggings").maxCount(1)), "silver_leggings"));
+		RebornRegistry.registerItem(TRContent.SILVER_BOOTS = InitUtils.setup(new ArmorItem(TRArmorMaterials.SILVER, EquipmentType.BOOTS, getItemSettings("silver_boots").maxCount(1)), "silver_boots"));
 
-		RebornRegistry.registerItem(TRContent.STEEL_HELMET = InitUtils.setup(new ArmorItem(TRArmorMaterials.STEEL, EquipmentType.HELMET, new Item.Settings().maxCount(1)), "steel_helmet"));
-		RebornRegistry.registerItem(TRContent.STEEL_CHESTPLATE = InitUtils.setup(new ArmorItem(TRArmorMaterials.STEEL, EquipmentType.CHESTPLATE, new Item.Settings().maxCount(1)), "steel_chestplate"));
-		RebornRegistry.registerItem(TRContent.STEEL_LEGGINGS = InitUtils.setup(new ArmorItem(TRArmorMaterials.STEEL, EquipmentType.LEGGINGS, new Item.Settings().maxCount(1)), "steel_leggings"));
-		RebornRegistry.registerItem(TRContent.STEEL_BOOTS = InitUtils.setup(new ArmorItem(TRArmorMaterials.STEEL, EquipmentType.BOOTS, new Item.Settings().maxCount(1)), "steel_boots"));
+		RebornRegistry.registerItem(TRContent.STEEL_HELMET = InitUtils.setup(new ArmorItem(TRArmorMaterials.STEEL, EquipmentType.HELMET, getItemSettings("steel_helmet").maxCount(1)), "steel_helmet"));
+		RebornRegistry.registerItem(TRContent.STEEL_CHESTPLATE = InitUtils.setup(new ArmorItem(TRArmorMaterials.STEEL, EquipmentType.CHESTPLATE, getItemSettings("steel_chestplate").maxCount(1)), "steel_chestplate"));
+		RebornRegistry.registerItem(TRContent.STEEL_LEGGINGS = InitUtils.setup(new ArmorItem(TRArmorMaterials.STEEL, EquipmentType.LEGGINGS, getItemSettings("steel_leggings").maxCount(1)), "steel_leggings"));
+		RebornRegistry.registerItem(TRContent.STEEL_BOOTS = InitUtils.setup(new ArmorItem(TRArmorMaterials.STEEL, EquipmentType.BOOTS, getItemSettings("steel_boots").maxCount(1)), "steel_boots"));
 
 		// Battery
-		RebornRegistry.registerItem(TRContent.RED_CELL_BATTERY = InitUtils.setup(new BatteryItem(TechRebornConfig.redCellBatteryMaxCharge, RcEnergyTier.LOW), "red_cell_battery"));
-		RebornRegistry.registerItem(TRContent.LITHIUM_ION_BATTERY = InitUtils.setup(new BatteryItem(TechRebornConfig.lithiumIonBatteryMaxCharge, RcEnergyTier.MEDIUM), "lithium_ion_battery"));
-		RebornRegistry.registerItem(TRContent.LITHIUM_ION_BATPACK = InitUtils.setup(new BatpackItem(TechRebornConfig.lithiumBatpackCharge, TRArmorMaterials.LITHIUM_BATPACK, RcEnergyTier.MEDIUM), "lithium_ion_batpack"));
-		RebornRegistry.registerItem(TRContent.ENERGY_CRYSTAL = InitUtils.setup(new BatteryItem(TechRebornConfig.energyCrystalMaxCharge, RcEnergyTier.HIGH), "energy_crystal"));
-		RebornRegistry.registerItem(TRContent.LAPOTRON_CRYSTAL = InitUtils.setup(new BatteryItem(TechRebornConfig.lapotronCrystalMaxCharge, RcEnergyTier.EXTREME), "lapotron_crystal"));
-		RebornRegistry.registerItem(TRContent.LAPOTRONIC_ORB = InitUtils.setup(new BatteryItem(TechRebornConfig.lapotronicOrbMaxCharge, RcEnergyTier.INSANE), "lapotronic_orb"));
-		RebornRegistry.registerItem(TRContent.LAPOTRONIC_ORBPACK = InitUtils.setup(new BatpackItem(TechRebornConfig.lapotronPackCharge, TRArmorMaterials.LAPOTRONIC_ORBPACK, RcEnergyTier.INSANE), "lapotronic_orbpack"));
+		RebornRegistry.registerItem(TRContent.RED_CELL_BATTERY = InitUtils.setup(new BatteryItem("red_cell_battery", TechRebornConfig.redCellBatteryMaxCharge, RcEnergyTier.LOW), "red_cell_battery"));
+		RebornRegistry.registerItem(TRContent.LITHIUM_ION_BATTERY = InitUtils.setup(new BatteryItem("lithium_ion_battery", TechRebornConfig.lithiumIonBatteryMaxCharge, RcEnergyTier.MEDIUM), "lithium_ion_battery"));
+		RebornRegistry.registerItem(TRContent.LITHIUM_ION_BATPACK = InitUtils.setup(new BatpackItem("lithium_ion_batpack", TechRebornConfig.lithiumBatpackCharge, TRArmorMaterials.LITHIUM_BATPACK, RcEnergyTier.MEDIUM), "lithium_ion_batpack"));
+		RebornRegistry.registerItem(TRContent.ENERGY_CRYSTAL = InitUtils.setup(new BatteryItem("energy_crystal", TechRebornConfig.energyCrystalMaxCharge, RcEnergyTier.HIGH), "energy_crystal"));
+		RebornRegistry.registerItem(TRContent.LAPOTRON_CRYSTAL = InitUtils.setup(new BatteryItem("lapotron_crystal", TechRebornConfig.lapotronCrystalMaxCharge, RcEnergyTier.EXTREME), "lapotron_crystal"));
+		RebornRegistry.registerItem(TRContent.LAPOTRONIC_ORB = InitUtils.setup(new BatteryItem("lapotronic_orb", TechRebornConfig.lapotronicOrbMaxCharge, RcEnergyTier.INSANE), "lapotronic_orb"));
+		RebornRegistry.registerItem(TRContent.LAPOTRONIC_ORBPACK = InitUtils.setup(new BatpackItem("lapotronic_orbpack", TechRebornConfig.lapotronPackCharge, TRArmorMaterials.LAPOTRONIC_ORBPACK, RcEnergyTier.INSANE), "lapotronic_orbpack"));
 
 		// Tools
-		RebornRegistry.registerItem(TRContent.TREE_TAP = InitUtils.setup(new TreeTapItem(), "treetap"));
-		RebornRegistry.registerItem(TRContent.WRENCH = InitUtils.setup(new WrenchItem(), "wrench"));
-		RebornRegistry.registerItem(TRContent.PAINTING_TOOL = InitUtils.setup(new PaintingToolItem(), "painting_tool"));
+		RebornRegistry.registerItem(TRContent.TREE_TAP = InitUtils.setup(new TreeTapItem("treetap"), "treetap"));
+		RebornRegistry.registerItem(TRContent.WRENCH = InitUtils.setup(new WrenchItem("wrench"), "wrench"));
+		RebornRegistry.registerItem(TRContent.PAINTING_TOOL = InitUtils.setup(new PaintingToolItem("painting_tool"), "painting_tool"));
 
-		RebornRegistry.registerItem(TRContent.BASIC_DRILL = InitUtils.setup(new DrillItem(TRToolMaterials.BASIC_DRILL, TechRebornConfig.basicDrillCharge, RcEnergyTier.MEDIUM, TechRebornConfig.basicDrillCost, 8F), "basic_drill"));
-		RebornRegistry.registerItem(TRContent.BASIC_CHAINSAW = InitUtils.setup(new ChainsawItem(TRToolMaterials.BASIC_CHAINSAW, TechRebornConfig.basicChainsawCharge, RcEnergyTier.MEDIUM, TechRebornConfig.basicChainsawCost, 8F), "basic_chainsaw"));
-		RebornRegistry.registerItem(TRContent.BASIC_JACKHAMMER = InitUtils.setup(new JackhammerItem(TRToolMaterials.BASIC_JACKHAMMER, TechRebornConfig.basicJackhammerCharge, RcEnergyTier.MEDIUM, TechRebornConfig.basicJackhammerCost), "basic_jackhammer"));
-		RebornRegistry.registerItem(TRContent.ELECTRIC_TREE_TAP = InitUtils.setup(new ElectricTreetapItem(), "electric_treetap"));
+		RebornRegistry.registerItem(TRContent.BASIC_DRILL = InitUtils.setup(new DrillItem("basic_drill", TRToolMaterials.BASIC_DRILL, TechRebornConfig.basicDrillCharge, RcEnergyTier.MEDIUM, TechRebornConfig.basicDrillCost, 8F), "basic_drill"));
+		RebornRegistry.registerItem(TRContent.BASIC_CHAINSAW = InitUtils.setup(new ChainsawItem("basic_chainsaw", TRToolMaterials.BASIC_CHAINSAW, TechRebornConfig.basicChainsawCharge, RcEnergyTier.MEDIUM, TechRebornConfig.basicChainsawCost, 8F), "basic_chainsaw"));
+		RebornRegistry.registerItem(TRContent.BASIC_JACKHAMMER = InitUtils.setup(new JackhammerItem("basic_jackhammer", TRToolMaterials.BASIC_JACKHAMMER, TechRebornConfig.basicJackhammerCharge, RcEnergyTier.MEDIUM, TechRebornConfig.basicJackhammerCost), "basic_jackhammer"));
+		RebornRegistry.registerItem(TRContent.ELECTRIC_TREE_TAP = InitUtils.setup(new ElectricTreetapItem("electric_treetap"), "electric_treetap"));
 
-		RebornRegistry.registerItem(TRContent.ADVANCED_DRILL = InitUtils.setup(new DrillItem(TRToolMaterials.ADVANCED_DRILL, TechRebornConfig.advancedDrillCharge, RcEnergyTier.EXTREME, TechRebornConfig.advancedDrillCost, 12F), "advanced_drill"));
-		RebornRegistry.registerItem(TRContent.ADVANCED_CHAINSAW = InitUtils.setup(new ChainsawItem(TRToolMaterials.ADVANCED_CHAINSAW, TechRebornConfig.advancedChainsawCharge, RcEnergyTier.EXTREME, TechRebornConfig.advancedChainsawCost, 12F), "advanced_chainsaw"));
-		RebornRegistry.registerItem(TRContent.ADVANCED_JACKHAMMER = InitUtils.setup(new AdvancedJackhammerItem(), "advanced_jackhammer"));
-		RebornRegistry.registerItem(TRContent.ROCK_CUTTER = InitUtils.setup(new RockCutterItem(), "rock_cutter"));
+		RebornRegistry.registerItem(TRContent.ADVANCED_DRILL = InitUtils.setup(new DrillItem("advanced_drill", TRToolMaterials.ADVANCED_DRILL, TechRebornConfig.advancedDrillCharge, RcEnergyTier.EXTREME, TechRebornConfig.advancedDrillCost, 12F), "advanced_drill"));
+		RebornRegistry.registerItem(TRContent.ADVANCED_CHAINSAW = InitUtils.setup(new ChainsawItem("advanced_chainsaw", TRToolMaterials.ADVANCED_CHAINSAW, TechRebornConfig.advancedChainsawCharge, RcEnergyTier.EXTREME, TechRebornConfig.advancedChainsawCost, 12F), "advanced_chainsaw"));
+		RebornRegistry.registerItem(TRContent.ADVANCED_JACKHAMMER = InitUtils.setup(new AdvancedJackhammerItem("advanced_jackhammer"), "advanced_jackhammer"));
+		RebornRegistry.registerItem(TRContent.ROCK_CUTTER = InitUtils.setup(new RockCutterItem("rock_cutter"), "rock_cutter"));
 
-		RebornRegistry.registerItem(TRContent.INDUSTRIAL_DRILL = InitUtils.setup(new IndustrialDrillItem(), "industrial_drill"));
-		RebornRegistry.registerItem(TRContent.INDUSTRIAL_CHAINSAW = InitUtils.setup(new IndustrialChainsawItem(), "industrial_chainsaw"));
-		RebornRegistry.registerItem(TRContent.INDUSTRIAL_JACKHAMMER = InitUtils.setup(new IndustrialJackhammerItem(), "industrial_jackhammer"));
-		RebornRegistry.registerItem(TRContent.NANOSABER = InitUtils.setup(new NanosaberItem(), "nanosaber"));
-		RebornRegistry.registerItem(TRContent.OMNI_TOOL = InitUtils.setup(new OmniToolItem(), "omni_tool"));
+		RebornRegistry.registerItem(TRContent.INDUSTRIAL_DRILL = InitUtils.setup(new IndustrialDrillItem("industrial_drill"), "industrial_drill"));
+		RebornRegistry.registerItem(TRContent.INDUSTRIAL_CHAINSAW = InitUtils.setup(new IndustrialChainsawItem("industrial_chainsaw"), "industrial_chainsaw"));
+		RebornRegistry.registerItem(TRContent.INDUSTRIAL_JACKHAMMER = InitUtils.setup(new IndustrialJackhammerItem("industrial_jackhammer"), "industrial_jackhammer"));
+		RebornRegistry.registerItem(TRContent.NANOSABER = InitUtils.setup(new NanosaberItem("nanosaber"), "nanosaber"));
+		RebornRegistry.registerItem(TRContent.OMNI_TOOL = InitUtils.setup(new OmniToolItem("omni_tool"), "omni_tool"));
 
 		// Armor
-		RebornRegistry.registerItem(TRContent.CLOAKING_DEVICE = InitUtils.setup(new CloakingDeviceItem(), "cloaking_device"));
+		RebornRegistry.registerItem(TRContent.CLOAKING_DEVICE = InitUtils.setup(new CloakingDeviceItem("cloaking_device"), "cloaking_device"));
 
 		// Other
-		RebornRegistry.registerItem(TRContent.GPS = InitUtils.setup(new GpsItem(), "gps"));
-		RebornRegistry.registerItem(TRContent.FREQUENCY_TRANSMITTER = InitUtils.setup(new FrequencyTransmitterItem(), "frequency_transmitter"));
-		RebornRegistry.registerItem(TRContent.SCRAP_BOX = InitUtils.setup(new ScrapBoxItem(), "scrap_box"));
-		RebornRegistry.registerItem(TRContent.MANUAL = InitUtils.setup(new ManualItem(), "manual"));
-		RebornRegistry.registerItem(TRContent.DEBUG_TOOL = InitUtils.setup(new DebugToolItem(), "debug_tool"));
-		RebornRegistry.registerItem(TRContent.CELL = InitUtils.setup(new DynamicCellItem(), "cell"));
+		RebornRegistry.registerItem(TRContent.GPS = InitUtils.setup(new GpsItem("gps"), "gps"));
+		RebornRegistry.registerItem(TRContent.FREQUENCY_TRANSMITTER = InitUtils.setup(new FrequencyTransmitterItem("frequency_transmitter"), "frequency_transmitter"));
+		RebornRegistry.registerItem(TRContent.SCRAP_BOX = InitUtils.setup(new ScrapBoxItem("scrap_box"), "scrap_box"));
+		RebornRegistry.registerItem(TRContent.MANUAL = InitUtils.setup(new ManualItem("manual"), "manual"));
+		RebornRegistry.registerItem(TRContent.DEBUG_TOOL = InitUtils.setup(new DebugToolItem("debug_tool"), "debug_tool"));
+		RebornRegistry.registerItem(TRContent.CELL = InitUtils.setup(new DynamicCellItem("cell"), "cell"));
 		TRContent.CELL.registerFluidApi();
 
 		TechReborn.LOGGER.debug("TechReborn's Items Loaded");

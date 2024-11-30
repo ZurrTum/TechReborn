@@ -31,14 +31,18 @@ import net.minecraft.command.BlockDataObject;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.state.property.Property;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import reborncore.common.powerSystem.PowerSystem;
 import team.reborn.energy.api.EnergyStorage;
+import techreborn.TechReborn;
 
 import java.util.Map.Entry;
 
@@ -47,8 +51,8 @@ import java.util.Map.Entry;
  */
 public class DebugToolItem extends Item {
 
-	public DebugToolItem() {
-		super(new Item.Settings());
+	public DebugToolItem(String name) {
+		super(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))));
 	}
 
 	@Override

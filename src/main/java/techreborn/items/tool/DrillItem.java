@@ -27,11 +27,15 @@ package techreborn.items.tool;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.*;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import reborncore.common.powerSystem.RcEnergyItem;
 import reborncore.common.powerSystem.RcEnergyTier;
 import reborncore.common.util.ItemUtils;
+import techreborn.TechReborn;
 import techreborn.init.TRContent;
 
 public class DrillItem extends MiningToolItem implements RcEnergyItem {
@@ -42,8 +46,12 @@ public class DrillItem extends MiningToolItem implements RcEnergyItem {
 	protected final float unpoweredSpeed = 0.5f;
 
 
-	public DrillItem(ToolMaterial material, int energyCapacity, RcEnergyTier tier, int cost, float poweredSpeed) {
-		super(material, TRContent.BlockTags.DRILL_MINEABLE, -2f, -2.8f, new Item.Settings().maxDamage(0));
+	public DrillItem(String name, ToolMaterial material, int energyCapacity, RcEnergyTier tier, int cost, float poweredSpeed) {
+		super(
+			material,
+			TRContent.BlockTags.DRILL_MINEABLE, -2f, -2.8f,
+			new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))).maxDamage(0)
+		);
 		this.maxCharge = energyCapacity;
 		this.tier = tier;
 		this.cost = cost;

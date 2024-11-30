@@ -25,10 +25,14 @@
 package techreborn.items.tool;
 
 import net.minecraft.item.Item;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.Identifier;
+import techreborn.TechReborn;
 
 public class TreeTapItem extends Item {
 
-	public TreeTapItem() {
-		super(new Item.Settings().maxDamage(20));
+	public TreeTapItem(String name) {
+		super(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))).maxDamage(20));
 	}
 }
