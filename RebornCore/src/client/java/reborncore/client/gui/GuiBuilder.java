@@ -381,7 +381,7 @@ public class GuiBuilder {
 
 			@Override
 			public void render(DrawContext drawContext, int index, int y, int x, int width, int height, int mouseX, int mouseY, boolean hovering, float delta) {
-				drawContext.drawWrappedTextWithShadow(MinecraftClient.getInstance().textRenderer, tip, x, y, width, theme.subtitleColor().rgba());
+				drawContext.drawTextWrapped(MinecraftClient.getInstance().textRenderer, tip, x, y, width, theme.subtitleColor().rgba());
 			}
 		}
 	}
