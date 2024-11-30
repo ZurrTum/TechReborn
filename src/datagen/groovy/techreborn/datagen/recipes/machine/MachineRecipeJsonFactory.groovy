@@ -29,7 +29,7 @@ import net.fabricmc.fabric.impl.datagen.FabricDataGenHelper
 import net.minecraft.advancement.Advancement.Builder
 import net.minecraft.advancement.AdvancementCriterion
 import net.minecraft.advancement.criterion.InventoryChangedCriterion
-import net.minecraft.data.recipe.RecipeExporter
+import net.minecraft.data.server.recipe.RecipeExporter
 import net.minecraft.item.ItemConvertible
 import net.minecraft.item.ItemStack
 import net.minecraft.recipe.RecipeType

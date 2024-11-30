@@ -25,9 +25,9 @@
 package techreborn.datagen.recipes.crafting
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
-import net.minecraft.data.recipe.ShapedRecipeJsonBuilder
-import net.minecraft.data.recipe.ShapelessRecipeJsonBuilder
-import net.minecraft.data.recipe.StonecuttingRecipeJsonBuilder
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder
+import net.minecraft.data.server.recipe.StonecuttingRecipeJsonBuilder
 import net.minecraft.item.ItemConvertible
 import net.minecraft.item.Items
 import net.minecraft.recipe.StonecuttingRecipe

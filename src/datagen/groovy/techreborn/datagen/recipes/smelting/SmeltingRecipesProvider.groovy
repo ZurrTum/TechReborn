@@ -25,7 +25,7 @@
 package techreborn.datagen.recipes.smelting
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
-import net.minecraft.data.recipe.CookingRecipeJsonBuilder
+import net.minecraft.data.server.recipe.CookingRecipeJsonBuilder
 import net.minecraft.item.ItemConvertible
 import net.minecraft.item.Items
 import net.minecraft.recipe.AbstractCookingRecipe
