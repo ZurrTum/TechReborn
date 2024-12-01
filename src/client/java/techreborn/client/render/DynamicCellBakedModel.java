@@ -24,6 +24,7 @@
 
 package techreborn.client.render;
 
+/*
 import net.fabricmc.fabric.api.renderer.v1.render.RenderContext;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.model.BakedModelManager;
@@ -72,3 +73,4 @@ public class DynamicCellBakedModel extends BaseDynamicFluidBakedModel {
 		return CELL_FLUID;
 	}
 }
+*/

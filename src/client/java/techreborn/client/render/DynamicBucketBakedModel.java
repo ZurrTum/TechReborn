@@ -24,6 +24,7 @@
 
 package techreborn.client.render;
 
+/*
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.texture.Sprite;
 import net.minecraft.client.texture.SpriteAtlasTexture;
@@ -57,3 +58,4 @@ public class DynamicBucketBakedModel extends BaseDynamicFluidBakedModel {
 		return BUCKET_FLUID;
 	}
 }
+*/
