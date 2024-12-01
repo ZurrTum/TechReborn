@@ -49,8 +49,8 @@ import techreborn.init.TRDamageTypes;
 import java.util.List;
 
 public class BlockFusionControlComputer extends BlockMachineBase {
-	public BlockFusionControlComputer() {
-		super(TRBlockSettings.fusionControlComputer());
+	public BlockFusionControlComputer(String name) {
+		super(TRBlockSettings.fusionControlComputer(name));
 	}
 
 	@Override

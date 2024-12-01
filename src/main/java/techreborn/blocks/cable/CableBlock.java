@@ -108,8 +108,8 @@ public class CableBlock extends BlockWithEntity implements Waterloggable {
 
 	public final TRContent.Cables type;
 
-	public CableBlock(TRContent.Cables type) {
-		super(TRBlockSettings.cable());
+	public CableBlock(TRContent.Cables type, String name) {
+		super(TRBlockSettings.cable(name));
 		this.type = type;
 		setDefaultState(this.getStateManager().getDefaultState().with(EAST, false).with(WEST, false).with(NORTH, false)
 				.with(SOUTH, false).with(UP, false).with(DOWN, false).with(WATERLOGGED, false).with(COVERED, false));

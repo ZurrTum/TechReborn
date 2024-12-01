@@ -65,6 +65,7 @@ import reborncore.common.fluid.FluidUtils;
 import reborncore.common.fluid.container.ItemFluidInfo;
 import techreborn.component.TRDataComponentTypes;
 import techreborn.init.TRContent;
+import techreborn.init.TRItemSettings;
 
 import java.util.Optional;
 
@@ -73,8 +74,8 @@ import java.util.Optional;
  */
 public class DynamicCellItem extends Item implements ItemFluidInfo {
 
-	public DynamicCellItem() {
-		super(new Item.Settings().maxCount(16).component(TRDataComponentTypes.FLUID, Fluids.EMPTY.getRegistryEntry()));
+	public DynamicCellItem(String name) {
+		super(TRItemSettings.item(name).maxCount(16).component(TRDataComponentTypes.FLUID, Fluids.EMPTY.getRegistryEntry()));
 	}
 
 	// Thanks vanilla :)

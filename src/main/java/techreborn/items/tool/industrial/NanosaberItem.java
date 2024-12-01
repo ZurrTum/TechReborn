@@ -46,6 +46,7 @@ import reborncore.common.powerSystem.RcEnergyTier;
 import reborncore.common.util.ItemUtils;
 import techreborn.component.TRDataComponentTypes;
 import techreborn.config.TechRebornConfig;
+import techreborn.init.TRItemSettings;
 import techreborn.init.TRToolMaterials;
 import techreborn.utils.TRItemUtils;
 
@@ -58,8 +59,8 @@ public class NanosaberItem extends SwordItem implements RcEnergyItem {
 	private static final EntityAttributeModifier DISABLED_ATTACK_SPEED_MODIFIER = new EntityAttributeModifier(Identifier.of("techreborn", "nano_saber_attack_speed"), 0, EntityAttributeModifier.Operation.ADD_VALUE);
 
 	// 1ME max charge with 2k charge rate
-	public NanosaberItem() {
-		super(TRToolMaterials.NANOSABER, 1f, 1f, new Item.Settings().maxDamage(0));
+	public NanosaberItem(String name) {
+		super(TRToolMaterials.NANOSABER, 1f, 1f, TRItemSettings.item(name).maxDamage(0));
 	}
 
 	// SwordItem

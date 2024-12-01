@@ -35,8 +35,8 @@ import techreborn.init.TRArmorMaterials;
 
 public class CloakingDeviceItem extends TREnergyArmourItem implements ArmorBlockEntityTicker, ArmorRemoveHandler {
 	// 40M FE capacity with 8k FE\t charge rate
-	public CloakingDeviceItem() {
-		super(TRArmorMaterials.CLOAKING_DEVICE, EquipmentType.CHESTPLATE, TechRebornConfig.cloakingDeviceCharge, RcEnergyTier.INSANE);
+	public CloakingDeviceItem(String name) {
+		super(TRArmorMaterials.CLOAKING_DEVICE, EquipmentType.CHESTPLATE, TechRebornConfig.cloakingDeviceCharge, RcEnergyTier.INSANE, name);
 	}
 
 	// TREnergyArmourItem

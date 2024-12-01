@@ -34,11 +34,12 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import techreborn.init.TRItemSettings;
 
 public class GpsItem extends Item {
 
-	public GpsItem() {
-		super(new Settings());
+	public GpsItem(String name) {
+		super(TRItemSettings.item(name));
 	}
 
 	@Override

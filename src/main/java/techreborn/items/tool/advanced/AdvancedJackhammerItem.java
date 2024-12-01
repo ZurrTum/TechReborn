@@ -51,8 +51,8 @@ import java.util.stream.Collectors;
 
 public class AdvancedJackhammerItem extends JackhammerItem implements MultiBlockBreakingTool {
 
-	public AdvancedJackhammerItem() {
-		super(TRToolMaterials.ADVANCED_JACKHAMMER, TechRebornConfig.advancedJackhammerCharge, RcEnergyTier.EXTREME, TechRebornConfig.advancedJackhammerCost);
+	public AdvancedJackhammerItem(String name) {
+		super(TRToolMaterials.ADVANCED_JACKHAMMER, TechRebornConfig.advancedJackhammerCharge, RcEnergyTier.EXTREME, TechRebornConfig.advancedJackhammerCost, name);
 	}
 
 	// JackhammerItem

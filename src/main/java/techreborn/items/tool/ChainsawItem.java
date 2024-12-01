@@ -36,6 +36,7 @@ import net.minecraft.world.World;
 import reborncore.common.powerSystem.RcEnergyItem;
 import reborncore.common.powerSystem.RcEnergyTier;
 import reborncore.common.util.ItemUtils;
+import techreborn.init.TRItemSettings;
 
 public class ChainsawItem extends AxeItem implements RcEnergyItem {
 
@@ -46,8 +47,8 @@ public class ChainsawItem extends AxeItem implements RcEnergyItem {
 	protected final float unpoweredSpeed = 0.5f;
 
 
-	public ChainsawItem(ToolMaterial material, int energyCapacity, RcEnergyTier tier, int cost, float poweredSpeed) {
-		super(material, 3f, -2.9f, new Item.Settings().maxDamage(0));
+	public ChainsawItem(ToolMaterial material, int energyCapacity, RcEnergyTier tier, int cost, float poweredSpeed, String name) {
+		super(material, 3f, -2.9f, TRItemSettings.item(name).maxDamage(0));
 		this.maxCharge = energyCapacity;
 		this.tier = tier;
 		this.cost = cost;

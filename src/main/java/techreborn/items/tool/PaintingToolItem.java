@@ -43,13 +43,14 @@ import techreborn.blockentity.cable.CableBlockEntity;
 import techreborn.blocks.cable.CableBlock;
 import techreborn.component.TRDataComponentTypes;
 import techreborn.init.TRContent;
+import techreborn.init.TRItemSettings;
 
 import java.util.List;
 
 public class PaintingToolItem extends Item {
 
-	public PaintingToolItem() {
-		super(new Item.Settings().maxDamage(64));
+	public PaintingToolItem(String name) {
+		super(TRItemSettings.item(name).maxDamage(64));
 	}
 
 	public ActionResult useOnBlock(ItemUsageContext context) {

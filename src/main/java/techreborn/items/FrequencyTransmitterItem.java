@@ -41,14 +41,15 @@ import net.minecraft.util.math.GlobalPos;
 import net.minecraft.world.World;
 import reborncore.common.chunkloading.ChunkLoaderManager;
 import techreborn.component.TRDataComponentTypes;
+import techreborn.init.TRItemSettings;
 
 import java.util.List;
 import java.util.Optional;
 
 public class FrequencyTransmitterItem extends Item {
 
-	public FrequencyTransmitterItem() {
-		super(new Item.Settings().maxCount(1));
+	public FrequencyTransmitterItem(String name) {
+		super(TRItemSettings.item(name).maxCount(1));
 	}
 
 	@Override

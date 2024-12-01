@@ -34,13 +34,14 @@ import reborncore.common.crafting.RebornRecipe;
 import reborncore.common.crafting.RecipeUtils;
 import reborncore.common.util.WorldUtils;
 import techreborn.init.ModRecipes;
+import techreborn.init.TRItemSettings;
 
 import java.util.List;
 
 public class ScrapBoxItem extends Item {
 
-	public ScrapBoxItem() {
-		super(new Item.Settings());
+	public ScrapBoxItem(String name) {
+		super(TRItemSettings.item(name));
 	}
 
 	@Override

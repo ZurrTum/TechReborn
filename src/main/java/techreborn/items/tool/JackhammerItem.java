@@ -36,6 +36,7 @@ import reborncore.common.powerSystem.RcEnergyItem;
 import reborncore.common.powerSystem.RcEnergyTier;
 import reborncore.common.util.ItemUtils;
 import techreborn.init.TRContent;
+import techreborn.init.TRItemSettings;
 
 
 public class JackhammerItem extends PickaxeItem implements RcEnergyItem {
@@ -44,8 +45,8 @@ public class JackhammerItem extends PickaxeItem implements RcEnergyItem {
 	public final int cost;
 	protected final float unpoweredSpeed = 0.5F;
 
-	public JackhammerItem(ToolMaterial material, int energyCapacity, RcEnergyTier tier, int cost) {
-		super(material, -2f, -2.8f, new Item.Settings().maxDamage(0));
+	public JackhammerItem(ToolMaterial material, int energyCapacity, RcEnergyTier tier, int cost, String name) {
+		super(material, -2f, -2.8f, TRItemSettings.item(name).maxDamage(0));
 		this.maxCharge = energyCapacity;
 		this.tier = tier;
 		this.cost = cost;

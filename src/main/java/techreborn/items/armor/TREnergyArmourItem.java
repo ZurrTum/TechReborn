@@ -36,13 +36,14 @@ import org.jetbrains.annotations.Nullable;
 import reborncore.common.powerSystem.RcEnergyItem;
 import reborncore.common.powerSystem.RcEnergyTier;
 import reborncore.common.util.ItemUtils;
+import techreborn.init.TRItemSettings;
 
 public abstract class TREnergyArmourItem extends ArmorItem implements RcEnergyItem {
 	public final long maxCharge;
 	private final RcEnergyTier energyTier;
 
-	public TREnergyArmourItem(ArmorMaterial material, EquipmentType slot, long maxCharge, RcEnergyTier energyTier) {
-		super(material, slot, new Item.Settings().maxCount(1));
+	public TREnergyArmourItem(ArmorMaterial material, EquipmentType slot, long maxCharge, RcEnergyTier energyTier, String name) {
+		super(material, slot, TRItemSettings.item(name).maxCount(1));
 		this.maxCharge = maxCharge;
 		this.energyTier = energyTier;
 	}

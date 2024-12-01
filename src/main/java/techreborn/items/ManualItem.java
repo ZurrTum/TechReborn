@@ -32,12 +32,13 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 import reborncore.common.network.NetworkManager;
+import techreborn.init.TRItemSettings;
 import techreborn.packets.clientbound.OpenManualPayload;
 
 public class ManualItem extends Item {
 
-	public ManualItem() {
-		super(new Item.Settings().maxCount(1));
+	public ManualItem(String name) {
+		super(TRItemSettings.item(name).maxCount(1));
 	}
 
 	@Override

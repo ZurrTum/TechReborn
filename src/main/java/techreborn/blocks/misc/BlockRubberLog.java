@@ -66,8 +66,8 @@ public class BlockRubberLog extends PillarBlock {
 	public static final BooleanProperty HAS_SAP = BooleanProperty.of("hassap");
 	public static final BooleanProperty SHOULD_SAP = BooleanProperty.of("shouldsap");
 
-	public BlockRubberLog() {
-		super(TRBlockSettings.rubberLog());
+	public BlockRubberLog(String name) {
+		super(TRBlockSettings.rubberLog(name));
 		this.setDefaultState(this.getDefaultState().with(SAP_SIDE, Direction.NORTH).with(HAS_SAP, false).with(SHOULD_SAP, true).with(AXIS, Direction.Axis.Y));
 		FlammableBlockRegistry.getDefaultInstance().add(this, 5, 5);
 	}

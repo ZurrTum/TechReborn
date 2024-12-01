@@ -51,7 +51,7 @@ public class StorageUnitBlock extends BlockMachineBase {
 	public final TRContent.StorageUnit unitType;
 
 	public StorageUnitBlock(TRContent.StorageUnit unitType) {
-		super(TRBlockSettings.storageUnit(unitType.name.equals("buffer") || unitType.name.equals("crude")));
+		super(TRBlockSettings.storageUnit(unitType.name.equals("buffer") || unitType.name.equals("crude"), unitType.name));
 		this.unitType = unitType;
 	}
 

@@ -49,6 +49,8 @@ import reborncore.common.util.ItemHandlerUtils;
 import reborncore.common.util.WrenchUtils;
 import techreborn.init.TRBlockSettings;
 
+import java.util.Locale;
+
 
 /**
  * Created by Rushmead
@@ -59,7 +61,7 @@ public abstract class EnergyStorageBlock extends BaseBlockEntityProvider {
 	public final IMachineGuiHandler gui;
 
 	public EnergyStorageBlock(String name, IMachineGuiHandler gui) {
-		super(TRBlockSettings.energyStorage());
+		super(TRBlockSettings.energyStorage(name.toLowerCase(Locale.ROOT)));
 		this.setDefaultState(this.getStateManager().getDefaultState().with(FACING, Direction.NORTH));
 		this.name = name;
 		this.gui = gui;

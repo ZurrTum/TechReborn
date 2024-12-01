@@ -96,8 +96,8 @@ public enum ModFluids implements ItemConvertible {
 		flowingFluid = new RebornFluid(false, fluidSettings, () -> block, () -> bucket, () -> flowingFluid, () -> stillFluid) {
 		};
 
-		block = new RebornFluidBlock(stillFluid, TRBlockSettings.fluid());
-		bucket = new RebornBucketItem(stillFluid, new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1));
+		block = new RebornFluidBlock(stillFluid, TRBlockSettings.fluid(identifier.getPath()));
+		bucket = new RebornBucketItem(stillFluid, TRItemSettings.item(identifier.getPath()).recipeRemainder(Items.BUCKET).maxCount(1));
 	}
 
 	public void register() {
