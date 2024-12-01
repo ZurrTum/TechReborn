@@ -140,7 +140,7 @@ public interface RebornRecipe extends Recipe<RebornRecipeInput> {
 
 	@Override
 	default RecipeBookCategory getRecipeBookCategory() {
-		throw new UnsupportedOperationException();
+		return null;
 	}
 
 	// Done to try and stop the table from loading it
