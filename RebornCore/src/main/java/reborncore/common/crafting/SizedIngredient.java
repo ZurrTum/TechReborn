@@ -33,7 +33,6 @@ import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.recipe.Ingredient;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -45,7 +44,7 @@ import java.util.function.Predicate;
 public record SizedIngredient(int count, Ingredient ingredient) implements Predicate<ItemStack> {
 	public static MapCodec<SizedIngredient> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
 		Codec.INT.optionalFieldOf("count", 1).forGetter(SizedIngredient::count),
-		MapCodec.assumeMapUnsafe(Ingredient.CODEC).forGetter(SizedIngredient::ingredient)
+		Ingredient.CODEC.fieldOf("ingredient").forGetter(SizedIngredient::ingredient)
 	).apply(instance, SizedIngredient::new));
 	public static PacketCodec<RegistryByteBuf, SizedIngredient> PACKET_CODEC = PacketCodec.tuple(
 		PacketCodecs.INTEGER, SizedIngredient::count,
