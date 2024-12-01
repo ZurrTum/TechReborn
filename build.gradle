@@ -163,14 +163,6 @@ sourceSets {
         compileClasspath += main.output
         runtimeClasspath += main.output
     }
-
-    main {
-        resources {
-            srcDirs += [
-                'src/main/generated'
-            ]
-        }
-    }
 }
 
 allprojects {
