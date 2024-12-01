@@ -126,7 +126,8 @@ public interface RebornRecipe extends Recipe<RebornRecipeInput> {
 
 	@Override
 	default IngredientPlacement getIngredientPlacement() {
-		return IngredientPlacement.NONE;
+		DefaultedList<Ingredient> ingredients = this.ingredients().stream().map(SizedIngredient::ingredient).collect(DefaultedListCollector.toList());
+		return IngredientPlacement.forShapeless(ingredients);
 	}
 
 	// Done as our recipes do not support these functions, hopefully nothing blindly calls them
