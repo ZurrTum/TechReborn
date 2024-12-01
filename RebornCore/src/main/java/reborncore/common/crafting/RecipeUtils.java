@@ -32,6 +32,7 @@ import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
@@ -49,7 +50,13 @@ public class RecipeUtils {
 	}
 
 	private static <T extends RebornRecipe> Stream<RecipeEntry<T>> streamRecipeEntries(World world, RecipeType<T> type) {
-		throw new UnsupportedOperationException();
+		if (!(world instanceof ServerWorld serverWorld)) {
+			throw new IllegalArgumentException("World must be a ServerWorld");
+		}
+
+		return serverWorld.getRecipeManager().values().stream()
+			.filter(recipe -> recipe.value().getType() == type)
+			.map(recipe -> (RecipeEntry<T>) recipe);
 	}
 
 	/**
