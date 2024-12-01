@@ -49,7 +49,6 @@ import reborncore.common.util.ItemHandlerUtils;
 import reborncore.common.util.WrenchUtils;
 import techreborn.init.TRBlockSettings;
 
-import java.util.Locale;
 
 
 /**
@@ -57,13 +56,11 @@ import java.util.Locale;
  */
 public abstract class EnergyStorageBlock extends BaseBlockEntityProvider {
 	public static final EnumProperty<Direction> FACING = Properties.FACING;
-	public final String name;
 	public final IMachineGuiHandler gui;
 
-	public EnergyStorageBlock(String name, IMachineGuiHandler gui) {
-		super(TRBlockSettings.energyStorage(name.toLowerCase(Locale.ROOT)));
+	public EnergyStorageBlock(IMachineGuiHandler gui, String name) {
+		super(TRBlockSettings.energyStorage(name));
 		this.setDefaultState(this.getStateManager().getDefaultState().with(FACING, Direction.NORTH));
-		this.name = name;
 		this.gui = gui;
 		BlockWrenchEventHandler.wrenchableBlocks.add(this);
 	}

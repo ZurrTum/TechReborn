@@ -289,7 +289,7 @@ public class TRContent {
 		SolarPanels(RcEnergyTier tier, int generationRateD, int generationRateN) {
 			name = this.toString().toLowerCase(Locale.ROOT);
 			powerTier = tier;
-			block = new BlockSolarPanel(this, name);
+			block = new BlockSolarPanel(this, name + "_solar_panel");
 			this.generationRateD = generationRateD;
 			this.generationRateN = generationRateN;
 
@@ -323,7 +323,7 @@ public class TRContent {
 
 		StorageUnit(int capacity, boolean upgradable) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			block = new StorageUnitBlock(this);
+			block = new StorageUnitBlock(this, name.equals("buffer") ? "storage_buffer" : name + "_storage_unit");
 			this.capacity = capacity;
 
 			if (name.equals("buffer"))
@@ -505,7 +505,7 @@ public class TRContent {
 
 		Ores(OreDistribution distribution, UniformIntProvider experienceDroppedFallback, boolean industrial) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			block = new ExperienceDroppingBlock(experienceDroppedFallback != null ? experienceDroppedFallback : ConstantIntProvider.create(1), TRBlockSettings.ore(name.startsWith("deepslate"), name));
+			block = new ExperienceDroppingBlock(experienceDroppedFallback != null ? experienceDroppedFallback : ConstantIntProvider.create(1), TRBlockSettings.ore(name.startsWith("deepslate"), name + "_ore"));
 			this.industrial = industrial;
 			InitUtils.setup(block, name + "_ore");
 			tag = TagKey.of(RegistryKeys.ITEM, Identifier.of("c", "ores/" +
@@ -606,7 +606,7 @@ public class TRContent {
 
 		StorageBlocks(boolean isHot, float hardness, float resistance, String tagNameBase) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			block = new BlockStorage(isHot, hardness, resistance, name);
+			block = new BlockStorage(isHot, hardness, resistance, name + "_storage_block");
 			InitUtils.setup(block, name + "_storage_block");
 			tag = TagKey.of(RegistryKeys.ITEM, Identifier.of("c", "storage_blocks/" + Objects.requireNonNullElse(tagNameBase, name)));
 
@@ -751,18 +751,18 @@ public class TRContent {
 
 		DRAIN(new GenericMachineBlock(null, DrainBlockEntity::new, "drain")),
 		PUMP(new GenericMachineBlock(GuiType.PUMP, PumpBlockEntity::new, "pump")),
-		ADJUSTABLE_SU(new AdjustableSUBlock()),
+		ADJUSTABLE_SU(new AdjustableSUBlock("adjustable_su")),
 		CHARGE_O_MAT(new GenericMachineBlock(GuiType.CHARGEBENCH, ChargeOMatBlockEntity::new, "charge_o_mat")),
-		INTERDIMENSIONAL_SU(new InterdimensionalSUBlock()),
-		LAPOTRONIC_SU(new LapotronicSUBlock()),
+		INTERDIMENSIONAL_SU(new InterdimensionalSUBlock("interdimensional_su")),
+		LAPOTRONIC_SU(new LapotronicSUBlock("lapotronic_su")),
 		LSU_STORAGE(new LSUStorageBlock("lsu_storage")),
-		LOW_VOLTAGE_SU(new LowVoltageSUBlock()),
-		MEDIUM_VOLTAGE_SU(new MediumVoltageSUBlock()),
-		HIGH_VOLTAGE_SU(new HighVoltageSUBlock()),
-		LV_TRANSFORMER(new BlockLVTransformer()),
-		MV_TRANSFORMER(new BlockMVTransformer()),
-		HV_TRANSFORMER(new BlockHVTransformer()),
-		EV_TRANSFORMER(new BlockEVTransformer()),
+		LOW_VOLTAGE_SU(new LowVoltageSUBlock("low_voltage_su")),
+		MEDIUM_VOLTAGE_SU(new MediumVoltageSUBlock("medium_voltage_su")),
+		HIGH_VOLTAGE_SU(new HighVoltageSUBlock("high_voltage_su")),
+		LV_TRANSFORMER(new BlockLVTransformer("lv_transformer")),
+		MV_TRANSFORMER(new BlockMVTransformer("mv_transformer")),
+		HV_TRANSFORMER(new BlockHVTransformer("hv_transformer")),
+		EV_TRANSFORMER(new BlockEVTransformer("ev_transformer")),
 
 		ALARM(new BlockAlarm("alarm")),
 		CHUNK_LOADER(new GenericMachineBlock(GuiType.CHUNK_LOADER, ChunkLoaderBlockEntity::new, "chunk_loader")),
@@ -841,7 +841,7 @@ public class TRContent {
 
 		RawMetals() {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(TRItemSettings.item(name));
+			item = new Item(TRItemSettings.item("raw_" + name));
 			Ores oreVariant = null;
 			try {
 				oreVariant = Ores.valueOf(this.toString());
@@ -998,7 +998,7 @@ public class TRContent {
 
 		Gems() {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(TRItemSettings.item(name));
+			item = new Item(TRItemSettings.item(name + "_gem"));
 			Dusts dustVariant = null;
 			try {
 				dustVariant = Dusts.valueOf(this.toString());
@@ -1097,7 +1097,7 @@ public class TRContent {
 
 		Ingots(String tagNameBase) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(TRItemSettings.item(name));
+			item = new Item(TRItemSettings.item(name + "_ingot"));
 			Dusts dustVariant = null;
 			try {
 				dustVariant = Dusts.valueOf(this.toString());
@@ -1196,7 +1196,7 @@ public class TRContent {
 
 		Nuggets(String tagNameBase, ItemConvertible ingotVariant, boolean ofGem) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(TRItemSettings.item(name));
+			item = new Item(TRItemSettings.item(name + "_nugget"));
 			if (ingotVariant == null)
 				try {
 					ingotVariant = Ingots.valueOf(this.toString());
@@ -1391,7 +1391,7 @@ public class TRContent {
 
 		Plates(ItemConvertible source, ItemConvertible sourceBlock, boolean industrial, String tagNameBase) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(TRItemSettings.item(name));
+			item = new Item(TRItemSettings.item(name + "_plate"));
 			ItemConvertible sourceVariant = null;
 			if (source != null) {
 				sourceVariant = source;
@@ -1540,13 +1540,23 @@ public class TRContent {
 
 		Upgrades(IUpgrade upgrade) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new UpgradeItem(name, upgrade);
+			item = new UpgradeItem(name + "_upgrade", upgrade);
 			InitUtils.setup(item, name + "_upgrade");
 		}
 
 		@Override
 		public Item asItem() {
 			return item;
+		}
+
+		public static Upgrades fromItem(UpgradeItem item) {
+			for (Upgrades upgrade : values()) {
+				if (upgrade.item == item) {
+					return upgrade;
+				}
+			}
+
+			throw new IllegalArgumentException("Item is not an upgrade item");
 		}
 	}
 

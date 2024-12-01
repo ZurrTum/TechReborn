@@ -117,11 +117,13 @@ public class ModRegistry {
 	}
 
 	private static Item.Settings settings(Block block) {
-		return settings(block.getLootTableKey().get().getValue().getPath());
+		return settings(block.getSettings().registryKey.getValue().getPath());
 	}
 
 	private static Item.Settings settings(String name) {
-		return TRItemSettings.item(name).registryKey(RegistryKey.of(Registries.ITEM.getKey(), Identifier.of(TechReborn.MOD_ID, name)));
+		return TRItemSettings.item(name)
+			.registryKey(RegistryKey.of(Registries.ITEM.getKey(), Identifier.of(TechReborn.MOD_ID, name)))
+			.translationKey("block.techreborn." + name);
 	}
 
 	private static void registerItems() {

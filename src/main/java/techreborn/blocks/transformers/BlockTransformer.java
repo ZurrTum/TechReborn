@@ -51,12 +51,10 @@ import techreborn.init.TRBlockSettings;
 public abstract class BlockTransformer extends BaseBlockEntityProvider {
 
 	public static final EnumProperty<Direction> FACING = Properties.FACING;
-	public final String name;
 
 	public BlockTransformer(String name) {
 		super(TRBlockSettings.transformer(name));
 		this.setDefaultState(this.getStateManager().getDefaultState().with(FACING, Direction.NORTH));
-		this.name = name;
 		BlockWrenchEventHandler.wrenchableBlocks.add(this);
 	}
 

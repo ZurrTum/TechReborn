@@ -34,13 +34,10 @@ import reborncore.common.recipes.IUpgradeHandler;
 import techreborn.init.TRItemSettings;
 
 public class UpgradeItem extends Item implements IUpgrade {
-
-	public final String name;
 	public final IUpgrade behavior;
 
 	public UpgradeItem(String name, IUpgrade process) {
 		super(TRItemSettings.item(name).maxCount(16));
-		this.name = name;
 		this.behavior = process;
 	}
 
