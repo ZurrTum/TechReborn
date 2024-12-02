@@ -289,7 +289,7 @@ public class TRContent {
 		SolarPanels(RcEnergyTier tier, int generationRateD, int generationRateN) {
 			name = this.toString().toLowerCase(Locale.ROOT);
 			powerTier = tier;
-			block = new BlockSolarPanel(name, this);
+			block = new BlockSolarPanel(name + "_solar_panel", this);
 			this.generationRateD = generationRateD;
 			this.generationRateN = generationRateN;
 
@@ -323,7 +323,7 @@ public class TRContent {
 
 		StorageUnit(int capacity, boolean upgradable) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			block = new StorageUnitBlock(name, this);
+			block = new StorageUnitBlock(name.equals("buffer") ? "storage_buffer" : name + "_storage_unit", this);
 			this.capacity = capacity;
 
 			if (name.equals("buffer"))
@@ -380,7 +380,7 @@ public class TRContent {
 
 		TankUnit(int capacity) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			block = new TankUnitBlock(name, this);
+			block = new TankUnitBlock(name + "_tank_unit", this);
 			this.capacity = FluidValue.BUCKET.multiply(capacity);
 
 			InitUtils.setup(block, name + "_tank_unit");
@@ -446,7 +446,7 @@ public class TRContent {
 			this.canKill = canKill;
 			this.defaultCanKill = canKill;
 			this.tier = tier;
-			this.block = new CableBlock(name, this);
+			this.block = new CableBlock(name + "_cable", this);
 			InitUtils.setup(block, name + "_cable");
 		}
 
@@ -505,7 +505,7 @@ public class TRContent {
 
 		Ores(OreDistribution distribution, UniformIntProvider experienceDroppedFallback, boolean industrial) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			block = new ExperienceDroppingBlock(experienceDroppedFallback != null ? experienceDroppedFallback : ConstantIntProvider.create(1), TRBlockSettings.ore(name));
+			block = new ExperienceDroppingBlock(experienceDroppedFallback != null ? experienceDroppedFallback : ConstantIntProvider.create(1), TRBlockSettings.ore(name + "_ore"));
 			this.industrial = industrial;
 			InitUtils.setup(block, name + "_ore");
 			tag = TagKey.of(RegistryKeys.ITEM, Identifier.of("c", "ores/" +
@@ -606,22 +606,22 @@ public class TRContent {
 
 		StorageBlocks(boolean isHot, float hardness, float resistance, String tagNameBase) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			block = new BlockStorage(name, isHot, hardness, resistance);
+			block = new BlockStorage(name + "_storage_block", isHot, hardness, resistance);
 			InitUtils.setup(block, name + "_storage_block");
 			tag = TagKey.of(RegistryKeys.ITEM, Identifier.of("c", "storage_blocks/" + Objects.requireNonNullElse(tagNameBase, name)));
 
 			AbstractBlock.Settings settings_stairs = AbstractBlock.Settings.copy(block);
-			settings_stairs.registryKey(TRBlockSettings.getRegistryKey(name + "_stairs"));
+			settings_stairs.registryKey(TRBlockSettings.getRegistryKey(name + "_storage_block_stairs"));
 			stairsBlock = new TechRebornStairsBlock(block.getDefaultState(), settings_stairs);
 			InitUtils.setup(stairsBlock, name + "_storage_block_stairs");
 
 			AbstractBlock.Settings settings_slab = AbstractBlock.Settings.copy(block);
-			settings_slab.registryKey(TRBlockSettings.getRegistryKey(name + "_slab"));
+			settings_slab.registryKey(TRBlockSettings.getRegistryKey(name + "_storage_block_slab"));
 			slabBlock = new SlabBlock(settings_slab);
 			InitUtils.setup(slabBlock, name + "_storage_block_slab");
 
 			AbstractBlock.Settings settings_wall = AbstractBlock.Settings.copy(block);
-			settings_wall.registryKey(TRBlockSettings.getRegistryKey(name + "_wall"));
+			settings_wall.registryKey(TRBlockSettings.getRegistryKey(name + "_storage_block_wall"));
 			wallBlock = new WallBlock(settings_wall);
 			InitUtils.setup(wallBlock, name + "_storage_block_wall");
 		}
@@ -686,9 +686,9 @@ public class TRContent {
 
 		MachineBlocks(int casingHeatCapacity) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			frame = new BlockMachineFrame(name);
+			frame = new BlockMachineFrame(name + "_machine_frame");
 			InitUtils.setup(frame, name + "_machine_frame");
-			casing = new BlockMachineCasing(name + "_casing", casingHeatCapacity);
+			casing = new BlockMachineCasing(name + "_machine_casing", casingHeatCapacity);
 			InitUtils.setup(casing, name + "_machine_casing");
 		}
 
@@ -847,7 +847,7 @@ public class TRContent {
 
 		RawMetals() {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))));
+			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, "raw_" + name))));
 			Ores oreVariant = null;
 			try {
 				oreVariant = Ores.valueOf(this.toString());
@@ -928,7 +928,7 @@ public class TRContent {
 
 		SmallDusts(String tagNameBase, ItemConvertible dustVariant) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))));
+			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name + "_small_dust"))));
 			if (dustVariant == null)
 				try {
 					dustVariant = Dusts.valueOf(this.toString());
@@ -1004,7 +1004,7 @@ public class TRContent {
 
 		Gems() {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))));
+			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name + "_gem"))));
 			Dusts dustVariant = null;
 			try {
 				dustVariant = Dusts.valueOf(this.toString());
@@ -1202,7 +1202,7 @@ public class TRContent {
 
 		Nuggets(String tagNameBase, ItemConvertible ingotVariant, boolean ofGem) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))));
+			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name + "_nugget"))));
 			if (ingotVariant == null)
 				try {
 					ingotVariant = Ingots.valueOf(this.toString());
@@ -1397,7 +1397,7 @@ public class TRContent {
 
 		Plates(ItemConvertible source, ItemConvertible sourceBlock, boolean industrial, String tagNameBase) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name))));
+			item = new Item(new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(TechReborn.MOD_ID, name + "_plate"))));
 			ItemConvertible sourceVariant = null;
 			if (source != null) {
 				sourceVariant = source;
@@ -1546,7 +1546,7 @@ public class TRContent {
 
 		Upgrades(IUpgrade upgrade) {
 			name = this.toString().toLowerCase(Locale.ROOT);
-			item = new UpgradeItem(name, upgrade);
+			item = new UpgradeItem(name + "_upgrade", upgrade);
 			InitUtils.setup(item, name + "_upgrade");
 		}
 
