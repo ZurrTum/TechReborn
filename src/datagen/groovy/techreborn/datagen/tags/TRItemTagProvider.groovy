@@ -239,5 +239,18 @@ class TRItemTagProvider extends ItemTagProvider {
 			.add(Items.OCHRE_FROGLIGHT)
 			.add(Items.VERDANT_FROGLIGHT)
 			.add(Items.PEARLESCENT_FROGLIGHT)
+
+		getOrCreateTagBuilder(TRConventionalTags.RAW_TUNGSTEN_ORES)
+		getOrCreateTagBuilder(TRConventionalTags.RAW_LEAD_ORES)
+		getOrCreateTagBuilder(TRConventionalTags.RAW_SILVER_ORES)
+		getOrCreateTagBuilder(TRConventionalTags.RAW_TIN_ORES)
+		getOrCreateTagBuilder(TRConventionalTags.SULFUR_ORES)
+		getOrCreateTagBuilder(TRConventionalTags.GLOWSTONE_SMALL_DUSTS)
+		getOrCreateTagBuilder(TRConventionalTags.CALCITE_SMALL_DUSTS)
+		getOrCreateTagBuilder(TRConventionalTags.ENDSTONE_SMALL_DUSTS)
+		getOrCreateTagBuilder(TRConventionalTags.STEEL_BLOCKS)
+		getOrCreateTagBuilder(TRConventionalTags.LIMESTORE)
+		getOrCreateTagBuilder(TRConventionalTags.MARBLE)
+		getOrCreateTagBuilder(TRConventionalTags.SULFURS)
 	}
 }
