@@ -55,6 +55,7 @@ import techreborn.datagen.recipes.machine.industrial_grinder.IndustrialGrinderRe
 import techreborn.datagen.recipes.machine.industrial_sawmill.IndustrialSawmillRecipeJsonFactory
 import techreborn.datagen.recipes.machine.fluid_replicator.FluidReplicatorRecipeJsonFactory
 import techreborn.datagen.recipes.machine.rolling_machine.RollingMachineRecipeJsonFactory
+import techreborn.datagen.recipes.machine.scrapbox.ScrapboxRecipeJsonFactory
 import techreborn.init.ModFluids
 import techreborn.init.ModRecipes
 import techreborn.init.TRContent
@@ -240,8 +241,8 @@ abstract class TechRebornRecipesProvider extends FabricRecipeProvider {
 		MachineRecipeJsonFactory.create(ModRecipes.VACUUM_FREEZER, this, closure).offerTo(exporter)
 	}
 
-	def offerScrapboxRecipe(@DelegatesTo(value = MachineRecipeJsonFactory.class, strategy = Closure.DELEGATE_FIRST) Closure closure) {
-		MachineRecipeJsonFactory.create(ModRecipes.SCRAPBOX, this, closure).offerTo(exporter)
+	def offerScrapboxRecipe(@DelegatesTo(value = ScrapboxRecipeJsonFactory.class, strategy = Closure.DELEGATE_FIRST) Closure closure) {
+		ScrapboxRecipeJsonFactory.createScrapBox(this, closure).offerTo(exporter)
 	}
 
 	def offerRecyclerRecipe(@DelegatesTo(value = MachineRecipeJsonFactory.class, strategy = Closure.DELEGATE_FIRST) Closure closure) {
