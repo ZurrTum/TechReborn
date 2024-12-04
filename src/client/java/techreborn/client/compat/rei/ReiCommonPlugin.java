@@ -26,6 +26,7 @@ package techreborn.client.compat.rei;
 
 import dev.architectury.event.CompoundEventResult;
 import me.shedaniel.rei.api.common.display.Display;
+import me.shedaniel.rei.api.common.display.DisplaySerializerRegistry;
 import me.shedaniel.rei.api.common.entry.comparison.ItemComparatorRegistry;
 import me.shedaniel.rei.api.common.fluid.FluidSupportProvider;
 import me.shedaniel.rei.api.common.plugins.REICommonPlugin;
@@ -121,5 +122,12 @@ public class ReiCommonPlugin implements REICommonPlugin {
 		registry.beginRecipeFiller(RebornRecipe.class)
 			.filter(recipeEntry -> recipeEntry.value().getType() == recipeType)
 			.fill(recipeDisplay);
+	}
+
+	@Override
+	public void registerDisplaySerializer(DisplaySerializerRegistry registry) {
+		registry.register(Identifier.of(TechReborn.MOD_ID, "machine"), MachineRecipeDisplay.SERIALIZER);
+		registry.register(Identifier.of(TechReborn.MOD_ID, "fluid_generator"), FluidGeneratorRecipeDisplay.SERIALIZER);
+		registry.register(Identifier.of(TechReborn.MOD_ID, "fluid_replicator"), FluidReplicatorRecipeDisplay.SERIALIZER);
 	}
 }
