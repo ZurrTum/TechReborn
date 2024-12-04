@@ -499,7 +499,7 @@ public class GuiBuilder {
 		if (energyStored > maxEnergyStored) {
 			draw = barHeight;
 		}
-		drawSprite(drawContext, GuiSprites.POWER_BAR_OVERLAY, x + 1, y + 49 - draw, 12, draw, gui);
+		drawSprite(drawContext, GuiSprites.POWER_BAR_OVERLAY, x + 1, y + 49 - draw, 12, draw);
 
 		int percentage = percentage(maxEnergyStored, energyStored);
 		if (gui.isPointInRect(x + 1, y + 1, 11, 48, mouseX, mouseY)) {
