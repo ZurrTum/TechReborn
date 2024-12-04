@@ -34,7 +34,6 @@ import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.display.RecipeDisplay;
 import net.minecraft.recipe.display.SlotDisplay;
-import net.minecraft.registry.Registries;
 import net.minecraft.util.dynamic.Codecs;
 import reborncore.common.crafting.RebornRecipe;
 import reborncore.common.crafting.RebornRecipeDisplay;
