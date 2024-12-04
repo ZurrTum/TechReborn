@@ -67,6 +67,6 @@ public record SizedIngredient(int count, Ingredient ingredient) implements Predi
 	}
 
 	public List<ItemStack> getPreviewStacks() {
-		throw new UnsupportedOperationException();
+		return ingredient().entries.stream().map(entry -> new ItemStack(entry.value())).toList();
 	}
 }
