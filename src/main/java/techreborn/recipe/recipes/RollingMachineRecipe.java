@@ -34,13 +34,13 @@ import net.minecraft.recipe.IngredientPlacement;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.ShapedRecipe;
-import net.minecraft.recipe.input.CraftingRecipeInput;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.dynamic.Codecs;
 import reborncore.common.crafting.RebornRecipe;
 import reborncore.common.crafting.RebornRecipeInput;
 import reborncore.common.crafting.SizedIngredient;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
@@ -61,16 +61,14 @@ public record RollingMachineRecipe(RecipeType<? extends RollingMachineRecipe> ty
 
 	@Override
 	public List<ItemStack> outputs() {
-		throw new UnsupportedOperationException();
+		// Input does not affect the result
+		return Collections.singletonList(shapedRecipe.craft(null, null));
 	}
 
 	@Override
 	public ItemStack craft(RebornRecipeInput inventory, RegistryWrapper.WrapperLookup lookup) {
-		return shapedRecipe.craft(toCraftingRecipeInput(inventory), lookup);
-	}
-
-	public static CraftingRecipeInput toCraftingRecipeInput(RebornRecipeInput inventory) {
-		throw new UnsupportedOperationException();
+		// Input does not affect the result
+		return shapedRecipe.craft(null, lookup);
 	}
 
 	@Override
