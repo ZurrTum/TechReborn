@@ -30,11 +30,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
-import reborncore.common.crafting.RebornRecipe;
 import reborncore.common.crafting.RecipeUtils;
 import reborncore.common.util.WorldUtils;
 import techreborn.init.ModRecipes;
 import techreborn.init.TRItemSettings;
+import techreborn.recipe.recipes.ScrapBoxRecipe;
 
 import java.util.List;
 
@@ -48,7 +48,7 @@ public class ScrapBoxItem extends Item {
 	public ActionResult use(World world, PlayerEntity player, Hand hand) {
 		ItemStack stack = player.getMainHandStack();
 		if (!world.isClient) {
-			List<RebornRecipe> scrapboxRecipeList = RecipeUtils.getRecipes(world, ModRecipes.SCRAPBOX);
+			List<ScrapBoxRecipe> scrapboxRecipeList = RecipeUtils.getRecipes(world, ModRecipes.SCRAPBOX);
 			int random = world.random.nextInt(scrapboxRecipeList.size());
 			ItemStack out = scrapboxRecipeList.get(random).outputs().get(0);
 			WorldUtils.dropItem(out, world, player.getBlockPos());
