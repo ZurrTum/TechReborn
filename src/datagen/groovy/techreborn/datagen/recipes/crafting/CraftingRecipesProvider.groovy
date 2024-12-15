@@ -29,6 +29,7 @@ import net.minecraft.data.recipe.ShapedRecipeJsonBuilder
 import net.minecraft.data.recipe.ShapelessRecipeJsonBuilder
 import net.minecraft.data.recipe.StonecuttingRecipeJsonBuilder
 import net.minecraft.item.ItemConvertible
+import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
 import net.minecraft.recipe.StonecuttingRecipe
 import net.minecraft.recipe.book.RecipeCategory
@@ -249,6 +250,16 @@ class CraftingRecipesProvider extends TechRebornRecipesProvider {
 			.pattern("DDD")
 			.pattern("NDN")
 			.offerTo(this.exporter, getRecipeKey("crafting_table/parts/"+TRContent.Parts.TEMPLATE_TEMPLATE.name))
+		ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.MISC, new ItemStack(Items.RESIN_CLUMP, 2))
+			.input(TRContent.Parts.SAP, 2)
+			.input(Items.SLIME_BALL)
+			.criterion("has_sap", getCriterionConditions(TRContent.Parts.SAP))
+			.offerTo(this.exporter, getRecipeKey("crafting_table/parts/resin_clump"))
+		ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.MISC, new ItemStack(TRContent.Parts.SAP, 8))
+			.input(Items.RESIN_CLUMP, 4)
+			.input(Items.WATER_BUCKET)
+			.criterion("has_resin_clump", getCriterionConditions(Items.RESIN_CLUMP))
+			.offerTo(this.exporter, getRecipeKey("crafting_table/parts/sap"))
 	}
 
 	def static recipeNameString(String prefix, def input, def output, String source = null, String result = null) {
