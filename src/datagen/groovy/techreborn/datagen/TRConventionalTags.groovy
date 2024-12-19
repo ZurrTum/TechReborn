@@ -144,6 +144,7 @@ class TRConventionalTags {
 	public static final TagKey<Item> TITANIUM_BLOCKS = register("storage_blocks/titanium")
 	public static final TagKey<Item> TITANIUM_DUSTS = register("dusts/titanium")
 	public static final TagKey<Item> TITANIUM_INGOTS = register("ingots/titanium")
+	public static final TagKey<Item> TUFF = register("tuff")
 	public static final TagKey<Item> TUNGSTEN_BLOCKS = register("storage_blocks/tungsten")
 	public static final TagKey<Item> TUNGSTEN_INGOTS = register("ingots/tungsten")
 	public static final TagKey<Item> TUNGSTEN_ORES = register("ores/tungsten")

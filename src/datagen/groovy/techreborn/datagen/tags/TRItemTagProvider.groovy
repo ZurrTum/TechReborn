@@ -101,6 +101,13 @@ class TRItemTagProvider extends ItemTagProvider {
 		getOrCreateTagBuilder(TRContent.ItemTags.PERIDOT_TOOL_MATERIALS)
 			.addTag(TRContent.Gems.PERIDOT.asTag())
 
+		getOrCreateTagBuilder(TRConventionalTags.TUFF)
+			.add(Items.TUFF)
+			.add(Items.CHISELED_TUFF)
+			.add(Items.TUFF_BRICKS)
+			.add(Items.POLISHED_TUFF)
+			.add(Items.CHISELED_TUFF_BRICKS)
+
 		getOrCreateTagBuilder(ItemTags.BEACON_PAYMENT_ITEMS)
 			.addTag(TRContent.ItemTags.INGOTS)
 
