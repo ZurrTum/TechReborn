@@ -7,7 +7,7 @@
     ],
     "key": {
         "P": "#c:plates/iron",
-        "C": "#c:workbench",
+        "C": "minecraft:crafter",
         "M": "techreborn:advanced_circuit"
     },
     "result": {
