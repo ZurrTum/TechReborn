@@ -30,7 +30,6 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.BlockRenderManager;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.util.SpriteIdentifier;
@@ -201,9 +200,9 @@ public abstract class AbstractConfigPopupElement extends ElementBase {
 			matrixStack.multiply(quaternion);
 		}
 
-		VertexConsumerProvider.Immediate immediate = drawContext.getVertexConsumers();
-		dispatcher.getModelRenderer().render(matrixStack.peek(), immediate.getBuffer(RenderLayer.getSolid()), actualState, model, 1F, 1F, 1F, OverlayTexture.getU(15F), OverlayTexture.DEFAULT_UV);
-		immediate.draw();
+		drawContext.draw((vertexConsumers) -> {
+			dispatcher.getModelRenderer().render(matrixStack.peek(), vertexConsumers.getBuffer(RenderLayer.getSolid()), actualState, model, 1F, 1F, 1F, OverlayTexture.getU(15F), OverlayTexture.DEFAULT_UV);
+		});
 		matrixStack.pop();
 	}
 

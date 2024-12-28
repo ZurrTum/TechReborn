@@ -223,7 +223,7 @@ class GrinderRecipesProvider extends TechRebornRecipesProvider {
 		offerGrinderRecipe {
 			power 5
 			time 200
-			ingredients ItemTags.TRIM_TEMPLATES
+			ingredients TRContent.ItemTags.TRIM_TEMPLATES
 			outputs stack(TRContent.SmallDusts.DIAMOND, 5)
 		}
 		offerGrinderRecipe {

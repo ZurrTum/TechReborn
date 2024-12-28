@@ -97,7 +97,7 @@ public class ConfigSlotElement extends ParentElement {
 		int xPos = getX() + 1 + gui.getGuiLeft();
 		int yPos = getY() + 1 + gui.getGuiTop();
 
-		drawContext.drawItemInSlot(gui.getTextRenderer(), stack, xPos, yPos);
+		drawContext.drawItem(stack, xPos, yPos);
 
 		if (isMouseWithinRect(gui, mouseX, mouseY)) {
 			drawSprite(drawContext, gui, type.getButtonHoverOverlay(), getX(), getY());
