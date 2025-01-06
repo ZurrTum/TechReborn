@@ -213,7 +213,9 @@ public class DynamicCellItem extends Item implements ItemFluidInfo {
 					return ActionResult.SUCCESS.withNewHandStack(getEmpty());
 				} else {
 					stack.decrement(1);
-					insertOrDropStack(player, (ServerWorld) world, getEmpty());
+					if (!world.isClient) {
+						insertOrDropStack(player, (ServerWorld) world, getEmpty());
+					}
 
 					return ActionResult.SUCCESS;
 				}
