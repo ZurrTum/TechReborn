@@ -7,7 +7,7 @@
     ],
     "key": {
         "B": "minecraft:purpur_block",
-        "E": "#c:dusts/endstone_small",
+        "E": "#c:small_dusts/endstone",
         "P": "minecraft:purpur_pillar",
         "T": "#c:dusts/ender_pearl"
     },
