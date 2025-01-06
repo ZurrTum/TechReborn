@@ -247,7 +247,6 @@ class TRItemTagProvider extends ItemTagProvider {
 			.add(Items.VERDANT_FROGLIGHT)
 			.add(Items.PEARLESCENT_FROGLIGHT)
 
-		// Fix missing tags
 		getOrCreateTagBuilder(TRContent.ItemTags.TRIM_TEMPLATES)
 			.add(Items.WARD_ARMOR_TRIM_SMITHING_TEMPLATE)
 			.add(Items.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE)
@@ -267,17 +266,5 @@ class TRItemTagProvider extends ItemTagProvider {
 			.add(Items.HOST_ARMOR_TRIM_SMITHING_TEMPLATE)
 			.add(Items.FLOW_ARMOR_TRIM_SMITHING_TEMPLATE)
 			.add(Items.BOLT_ARMOR_TRIM_SMITHING_TEMPLATE)
-		getOrCreateTagBuilder(TRConventionalTags.RAW_TUNGSTEN_ORES)
-		getOrCreateTagBuilder(TRConventionalTags.RAW_LEAD_ORES)
-		getOrCreateTagBuilder(TRConventionalTags.RAW_SILVER_ORES)
-		getOrCreateTagBuilder(TRConventionalTags.RAW_TIN_ORES)
-		getOrCreateTagBuilder(TRConventionalTags.SULFUR_ORES)
-		getOrCreateTagBuilder(TRConventionalTags.GLOWSTONE_SMALL_DUSTS)
-		getOrCreateTagBuilder(TRConventionalTags.CALCITE_SMALL_DUSTS)
-		getOrCreateTagBuilder(TRConventionalTags.ENDSTONE_SMALL_DUSTS)
-		getOrCreateTagBuilder(TRConventionalTags.STEEL_BLOCKS)
-		getOrCreateTagBuilder(TRConventionalTags.LIMESTORE)
-		getOrCreateTagBuilder(TRConventionalTags.MARBLE)
-		getOrCreateTagBuilder(TRConventionalTags.SULFURS)
 	}
 }
